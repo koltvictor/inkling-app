@@ -1,0 +1,244 @@
+{
+  "id": "aq-10",
+  "name": "Autism-Spectrum Quotient (Short Form)",
+  "shortName": "AQ-10",
+  "version": "1.0",
+  "estimatedMinutes": 3,
+  "citation": "Allison, C., Auyeung, B., & Baron-Cohen, S. (2012). Toward brief 'Red Flags' for autism screening: The short Autism Spectrum Quotient and the Short Quantitative Checklist in 1,000 cases and 3,000 controls. Journal of the American Academy of Child & Adolescent Psychiatry, 51(2), 202-212.",
+  "publicDomain": true,
+  "validityNotes": "AQ-10 was developed as a primary-care 'red flag' screener. Original sensitivity 0.88 and specificity 0.91 at the recommended cutoff of 6 (Allison et al. 2012). Replication studies have found lower sensitivity and specificity in some populations, particularly among women and gender-diverse adults. Treat scores as a prompt for further evaluation, not as a definitive indicator.",
+  "category": "diagnostic-screener",
+  "items": [
+    {
+      "id": "aq10-1",
+      "text": "I often notice small sounds when others do not.",
+      "responses": [
+        {
+          "label": "Definitely agree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Slightly agree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Slightly disagree",
+          "scoringValue": 0
+        },
+        {
+          "label": "Definitely disagree",
+          "scoringValue": 0
+        }
+      ]
+    },
+    {
+      "id": "aq10-2",
+      "text": "I usually concentrate more on the whole picture, rather than the small details.",
+      "responses": [
+        {
+          "label": "Definitely agree",
+          "scoringValue": 0
+        },
+        {
+          "label": "Slightly agree",
+          "scoringValue": 0
+        },
+        {
+          "label": "Slightly disagree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Definitely disagree",
+          "scoringValue": 1
+        }
+      ]
+    },
+    {
+      "id": "aq10-3",
+      "text": "I find it easy to do more than one thing at once.",
+      "responses": [
+        {
+          "label": "Definitely agree",
+          "scoringValue": 0
+        },
+        {
+          "label": "Slightly agree",
+          "scoringValue": 0
+        },
+        {
+          "label": "Slightly disagree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Definitely disagree",
+          "scoringValue": 1
+        }
+      ]
+    },
+    {
+      "id": "aq10-4",
+      "text": "If there is an interruption, I can switch back to what I was doing very quickly.",
+      "responses": [
+        {
+          "label": "Definitely agree",
+          "scoringValue": 0
+        },
+        {
+          "label": "Slightly agree",
+          "scoringValue": 0
+        },
+        {
+          "label": "Slightly disagree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Definitely disagree",
+          "scoringValue": 1
+        }
+      ]
+    },
+    {
+      "id": "aq10-5",
+      "text": "I find it easy to read between the lines when someone is talking to me.",
+      "responses": [
+        {
+          "label": "Definitely agree",
+          "scoringValue": 0
+        },
+        {
+          "label": "Slightly agree",
+          "scoringValue": 0
+        },
+        {
+          "label": "Slightly disagree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Definitely disagree",
+          "scoringValue": 1
+        }
+      ]
+    },
+    {
+      "id": "aq10-6",
+      "text": "I know how to tell if someone listening to me is getting bored.",
+      "responses": [
+        {
+          "label": "Definitely agree",
+          "scoringValue": 0
+        },
+        {
+          "label": "Slightly agree",
+          "scoringValue": 0
+        },
+        {
+          "label": "Slightly disagree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Definitely disagree",
+          "scoringValue": 1
+        }
+      ]
+    },
+    {
+      "id": "aq10-7",
+      "text": "When I'm reading a story I find it difficult to work out the characters' intentions.",
+      "responses": [
+        {
+          "label": "Definitely agree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Slightly agree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Slightly disagree",
+          "scoringValue": 0
+        },
+        {
+          "label": "Definitely disagree",
+          "scoringValue": 0
+        }
+      ]
+    },
+    {
+      "id": "aq10-8",
+      "text": "I like to collect information about categories of things (e.g. types of car, types of bird, types of train, types of plant etc).",
+      "responses": [
+        {
+          "label": "Definitely agree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Slightly agree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Slightly disagree",
+          "scoringValue": 0
+        },
+        {
+          "label": "Definitely disagree",
+          "scoringValue": 0
+        }
+      ]
+    },
+    {
+      "id": "aq10-9",
+      "text": "I find it easy to work out what someone is thinking or feeling just by looking at their face.",
+      "responses": [
+        {
+          "label": "Definitely agree",
+          "scoringValue": 0
+        },
+        {
+          "label": "Slightly agree",
+          "scoringValue": 0
+        },
+        {
+          "label": "Slightly disagree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Definitely disagree",
+          "scoringValue": 1
+        }
+      ]
+    },
+    {
+      "id": "aq10-10",
+      "text": "I find it difficult to work out people's intentions.",
+      "responses": [
+        {
+          "label": "Definitely agree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Slightly agree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Slightly disagree",
+          "scoringValue": 0
+        },
+        {
+          "label": "Definitely disagree",
+          "scoringValue": 0
+        }
+      ]
+    }
+  ],
+  "scoring": {
+    "method": "sum",
+    "cutoff": 6,
+    "subscales": null,
+    "scoreRange": {
+      "min": 0,
+      "max": 10
+    },
+    "cutoffMeaning": "A score of 6 or above is the threshold recommended by NICE (CG142) and the original authors for considering further autism assessment in adults."
+  },
+  "fullName": "Autism Spectrum Quotient — 10 item"
+}
