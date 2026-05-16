@@ -88,7 +88,15 @@ export default function WelcomeScreen() {
           Inkling administers validated screening instruments. It does not diagnose.
         </Text>
       </View>
-    </SafeAreaView>
+            <Pressable
+          onPress={() => { tap.selection(); router.push('/settings'); }}
+          hitSlop={12}
+          testID="settings-link"
+          style={({ pressed }) => [welcomeStyles.settingsLink, pressed && { opacity: 0.5 }]}
+        >
+          <Text style={welcomeStyles.settingsLinkText}>Settings</Text>
+        </Pressable>
+      </SafeAreaView>
   );
 }
 
