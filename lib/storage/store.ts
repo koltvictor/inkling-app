@@ -34,6 +34,11 @@ export type InProgressScreener = {
   startedAt: number;
 };
 
+export type InterpretationEntry = {
+  body: string;
+  generatedAt: number;
+};
+
 type AppState = {
   ageBucket: AgeBucket | null;
   ageAttestedAt: number | null;
@@ -41,6 +46,7 @@ type AppState = {
   intakeFreeText: string | null;
   completedScreeners: CompletedScreener[];
   inProgressScreener: InProgressScreener | null;
+  interpretations: Record<string, InterpretationEntry>;
 
   setAge: (bucket: AgeBucket) => void;
   setSexAtBirth: (s: SexAtBirth) => void;
@@ -51,6 +57,9 @@ type AppState = {
   recordResponse: (itemId: string, responseIndex: number) => void;
   exitScreener: () => void;
   completeScreener: (result: CompletedScreener) => void;
+
+  setInterpretation: (cacheKey: string, body: string) => void;
+  clearInterpretations: () => void;
 
   reset: () => void;
 };
@@ -64,6 +73,7 @@ export const useAppStore = create<AppState>()(
       intakeFreeText: null,
       completedScreeners: [],
       inProgressScreener: null,
+      interpretations: {},
 
       setAge: (bucket) => set({ ageBucket: bucket, ageAttestedAt: Date.now() }),
       setSexAtBirth: (s) => set({ sexAtBirth: s }),
@@ -71,9 +81,7 @@ export const useAppStore = create<AppState>()(
 
       startOrResumeScreener: (screenerId) =>
         set((state) => {
-          if (state.inProgressScreener?.screenerId === screenerId) {
-            return {};
-          }
+          if (state.inProgressScreener?.screenerId === screenerId) return {};
           return {
             inProgressScreener: {
               screenerId,
@@ -114,6 +122,16 @@ export const useAppStore = create<AppState>()(
           inProgressScreener: null,
         })),
 
+      setInterpretation: (cacheKey, body) =>
+        set((state) => ({
+          interpretations: {
+            ...state.interpretations,
+            [cacheKey]: { body, generatedAt: Date.now() },
+          },
+        })),
+
+      clearInterpretations: () => set({ interpretations: {} }),
+
       reset: () =>
         set({
           ageBucket: null,
@@ -122,6 +140,7 @@ export const useAppStore = create<AppState>()(
           intakeFreeText: null,
           completedScreeners: [],
           inProgressScreener: null,
+          interpretations: {},
         }),
     }),
     {
@@ -134,6 +153,7 @@ export const useAppStore = create<AppState>()(
         intakeFreeText: state.intakeFreeText,
         completedScreeners: state.completedScreeners,
         inProgressScreener: state.inProgressScreener,
+        interpretations: state.interpretations,
       }),
     }
   )

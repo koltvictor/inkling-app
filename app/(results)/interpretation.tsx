@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { View, Text, StyleSheet, Pressable, ScrollView } from 'react-native';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useAppStore } from '../../lib/storage/store';
 import { getScreener } from '../../lib/scoring/loader';
+import {
+  buildInterpretPayload,
+  computeInterpretationCacheKey,
+  fetchInterpretation,
+} from '../../lib/api/client';
 import { colors } from '../../design/colors';
 import { typography } from '../../design/typography';
 import { spacing } from '../../design/spacing';
@@ -15,12 +20,18 @@ const formatSubscale = (raw: string) =>
     .split('_')
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
     .join(' ')
-    .replace('Sensory Motor', 'Sensory–Motor');
+    .replace('Sensory Motor', 'Sensory-Motor');
 
 export default function InterpretationScreen() {
   const router = useRouter();
   const completedScreeners = useAppStore((s) => s.completedScreeners);
-  const displayedScreeners = (() => {
+  const ageBucket = useAppStore((s) => s.ageBucket);
+  const sexAtBirth = useAppStore((s) => s.sexAtBirth);
+  const intakeFreeText = useAppStore((s) => s.intakeFreeText);
+  const interpretations = useAppStore((s) => s.interpretations);
+  const setInterpretation = useAppStore((s) => s.setInterpretation);
+
+  const displayedScreeners = useMemo(() => {
     const latest = new Map<string, (typeof completedScreeners)[number]>();
     for (const c of completedScreeners) {
       const existing = latest.get(c.screenerId);
@@ -31,7 +42,49 @@ export default function InterpretationScreen() {
     return Array.from(latest.values()).sort(
       (a, b) => a.completedAt - b.completedAt
     );
-  })();
+  }, [completedScreeners]);
+
+  const cacheKey = useMemo(
+    () => computeInterpretationCacheKey(displayedScreeners),
+    [displayedScreeners]
+  );
+
+  const cached = cacheKey ? interpretations[cacheKey] : undefined;
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchAndCache = useCallback(async () => {
+    if (!cacheKey || displayedScreeners.length === 0) return;
+    setLoading(true);
+    setError(null);
+    try {
+      const payload = buildInterpretPayload(displayedScreeners, {
+        ageBucket,
+        sexAtBirth,
+        intakeFreeText,
+      });
+      const response = await fetchInterpretation(payload);
+      setInterpretation(cacheKey, response.interpretation);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unknown error');
+    } finally {
+      setLoading(false);
+    }
+  }, [
+    cacheKey,
+    displayedScreeners,
+    ageBucket,
+    sexAtBirth,
+    intakeFreeText,
+    setInterpretation,
+  ]);
+
+  useEffect(() => {
+    if (!cached && !loading && !error && displayedScreeners.length > 0) {
+      fetchAndCache();
+    }
+  }, [cached, loading, error, displayedScreeners.length, fetchAndCache]);
 
   const nextScreenerId = AUTISM_PATH.find((id) => {
     const isCompleted = completedScreeners.some((s) => s.screenerId === id);
@@ -40,10 +93,7 @@ export default function InterpretationScreen() {
   });
   const nextScreener = nextScreenerId ? getScreener(nextScreenerId) : undefined;
 
-  const handleHome = () => {
-    router.replace('/');
-  };
-
+  const handleHome = () => router.replace('/');
   const handleNext = () => {
     if (nextScreenerId) router.push(`/${nextScreenerId}`);
   };
@@ -103,6 +153,40 @@ export default function InterpretationScreen() {
           );
         })}
 
+        {displayedScreeners.length > 0 && (
+          <View style={styles.interpretationSection}>
+            <View style={styles.rule} />
+            <Text style={styles.kicker}>An interpretation</Text>
+
+            {cached ? (
+              <View>
+                {cached.body
+                  .split(/\n\s*\n/)
+                  .map((p) => p.trim())
+                  .filter(Boolean)
+                  .map((paragraph, i) => (
+                    <Text key={i} style={styles.proseParagraph}>
+                      {paragraph}
+                    </Text>
+                  ))}
+              </View>
+            ) : loading ? (
+              <Text style={styles.loadingText}>
+                Inkling is reflecting on your responses...
+              </Text>
+            ) : error ? (
+              <View>
+                <Text style={styles.errorText}>
+                  Inkling could not generate an interpretation just now.
+                </Text>
+                <Pressable onPress={fetchAndCache} hitSlop={12}>
+                  <Text style={styles.retryLink}>Try again -></Text>
+                </Pressable>
+              </View>
+            ) : null}
+          </View>
+        )}
+
         {nextScreener && (
           <View style={styles.continueSection}>
             <Text style={styles.continueLabel}>Continue if you'd like</Text>
@@ -114,7 +198,7 @@ export default function InterpretationScreen() {
               style={({ pressed }) => [styles.cta, pressed && styles.pressed]}
               hitSlop={12}
             >
-              <Text style={styles.ctaText}>Begin {nextScreener.shortName} →</Text>
+              <Text style={styles.ctaText}>Begin {nextScreener.shortName} -></Text>
             </Pressable>
           </View>
         )}
@@ -122,7 +206,7 @@ export default function InterpretationScreen() {
         <View style={styles.footer}>
           <Pressable onPress={handleHome} hitSlop={12}>
             <Text style={styles.secondaryLink}>
-              {nextScreener ? 'Stop here and go home' : 'Done — go home'}
+              {nextScreener ? 'Stop here and go home' : 'Done - go home'}
             </Text>
           </Pressable>
         </View>
@@ -142,7 +226,6 @@ const styles = StyleSheet.create({
     paddingTop: spacing.xxl,
     paddingBottom: spacing.xxxl,
   },
-
   kicker: {
     ...typography.caption,
     fontSize: 13,
@@ -151,10 +234,7 @@ const styles = StyleSheet.create({
     color: colors.light.inkSoft,
     marginBottom: spacing.xxxl,
   },
-
-  screenerSection: {
-    marginBottom: spacing.xxxl,
-  },
+  screenerSection: { marginBottom: spacing.xxxl },
   screenerName: {
     ...typography.display,
     fontSize: 40,
@@ -170,7 +250,6 @@ const styles = StyleSheet.create({
     color: colors.light.inkSoft,
     marginTop: spacing.xs,
   },
-
   scoreLine: {
     flexDirection: 'row',
     alignItems: 'baseline',
@@ -198,28 +277,52 @@ const styles = StyleSheet.create({
     color: colors.light.ink,
     marginTop: spacing.md,
   },
-
-  subscales: {
-    marginTop: spacing.xxl,
-  },
+  subscales: { marginTop: spacing.xxl },
   subscaleRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'baseline',
     paddingVertical: spacing.sm,
   },
-  subscaleName: {
-    ...typography.body,
-    fontSize: 16,
-    color: colors.light.ink,
-  },
+  subscaleName: { ...typography.body, fontSize: 16, color: colors.light.ink },
   subscaleValue: {
     ...typography.body,
     fontSize: 16,
     color: colors.light.inkSoft,
     fontVariant: ['tabular-nums'],
   },
-
+  interpretationSection: { marginBottom: spacing.xxxl },
+  rule: {
+    height: 1,
+    backgroundColor: colors.light.rule,
+    marginBottom: spacing.xxl,
+  },
+  proseParagraph: {
+    ...typography.display,
+    fontSize: 18,
+    lineHeight: 30,
+    letterSpacing: 0,
+    color: colors.light.ink,
+    marginBottom: spacing.lg,
+  },
+  loadingText: {
+    ...typography.display,
+    fontSize: 18,
+    lineHeight: 28,
+    letterSpacing: 0,
+    fontStyle: 'italic',
+    color: colors.light.inkSoft,
+  },
+  errorText: {
+    ...typography.body,
+    color: colors.light.ink,
+    marginBottom: spacing.md,
+  },
+  retryLink: {
+    ...typography.body,
+    color: colors.light.ink,
+    textDecorationLine: 'underline',
+  },
   continueSection: {
     marginTop: spacing.xl,
     marginBottom: spacing.xxxl,
@@ -243,9 +346,7 @@ const styles = StyleSheet.create({
     color: colors.light.ink,
     marginBottom: spacing.xl,
   },
-  cta: {
-    alignSelf: 'flex-start',
-  },
+  cta: { alignSelf: 'flex-start' },
   ctaText: {
     ...typography.headline,
     fontSize: 20,
@@ -253,10 +354,7 @@ const styles = StyleSheet.create({
     color: colors.light.ink,
     textDecorationLine: 'underline',
   },
-  pressed: {
-    opacity: 0.4,
-  },
-
+  pressed: { opacity: 0.4 },
   footer: {
     paddingTop: spacing.xxl,
     borderTopWidth: 1,
@@ -268,7 +366,6 @@ const styles = StyleSheet.create({
     color: colors.light.inkSoft,
     textDecorationLine: 'underline',
   },
-
   disclaimer: {
     ...typography.caption,
     fontSize: 13,
