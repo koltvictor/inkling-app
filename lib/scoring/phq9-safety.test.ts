@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import phq9 from './lib/screeners/phq-9.json';
-import { score } from './lib/scoring/score';
-import type { Screener } from './lib/scoring/types';
+import phq9 from '../screeners/phq-9.json';
+import { score } from './score';
+import type { Screener } from './types';
 
 describe('PHQ-9 safety smoke', () => {
   it('flags item 9 endorsement at any non-zero level', () => {

@@ -121,7 +121,7 @@
     },
     {
       "id": "phq-9-6",
-      "text": "Feeling bad about yourself \u2014 or that you are a failure or have let yourself or your family down",
+      "text": "Feeling bad about yourself\u2014or that you are a failure or have let yourself or your family down",
       "responses": [
         {
           "label": "Not at all",
@@ -165,7 +165,7 @@
     },
     {
       "id": "phq-9-8",
-      "text": "Moving or speaking so slowly that other people could have noticed. Or the opposite \u2014 being so fidgety or restless that you have been moving around a lot more than usual",
+      "text": "Moving or speaking so slowly that other people could have noticed? Or the opposite\u2014being so fidgety or restless that you have been moving around a lot more than usual",
       "responses": [
         {
           "label": "Not at all",
@@ -187,7 +187,7 @@
     },
     {
       "id": "phq-9-9",
-      "text": "Thoughts that you would be better off dead, or of hurting yourself in some way",
+      "text": "Thoughts that you would be better off dead or of hurting yourself in some way",
       "safetyItem": true,
       "responses": [
         {

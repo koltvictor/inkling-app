@@ -359,19 +359,19 @@ const styles = StyleSheet.create({
     letterSpacing: 0,
     color: colors.light.inkSoft,
     fontVariant: ['tabular-nums'],
-    marginLeft: spacing.sm,
+    marginLeft: spacing.s,
   },
   cutoffStatus: {
     ...typography.body,
     color: colors.light.ink,
-    marginTop: spacing.md,
+    marginTop: spacing.m,
   },
   subscales: { marginTop: spacing.xxl },
   subscaleRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'baseline',
-    paddingVertical: spacing.sm,
+    paddingVertical: spacing.s,
   },
   subscaleName: { ...typography.body, fontSize: 16, color: colors.light.ink },
   subscaleValue: {
@@ -392,7 +392,7 @@ const styles = StyleSheet.create({
     lineHeight: 30,
     letterSpacing: 0,
     color: colors.light.ink,
-    marginBottom: spacing.lg,
+    marginBottom: spacing.l,
   },
   loadingText: {
     ...typography.display,
@@ -405,7 +405,7 @@ const styles = StyleSheet.create({
   errorText: {
     ...typography.body,
     color: colors.light.ink,
-    marginBottom: spacing.md,
+    marginBottom: spacing.m,
   },
   retryLink: {
     ...typography.body,
@@ -418,15 +418,15 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
     color: colors.light.ink,
-    marginBottom: spacing.md,
-    marginTop: spacing.lg,
+    marginBottom: spacing.m,
+    marginTop: spacing.l,
   },
-  resourceGroup: { marginBottom: spacing.md },
+  resourceGroup: { marginBottom: spacing.m },
   resourceItem: {
     ...typography.body,
     fontSize: 16,
     color: colors.light.ink,
-    marginBottom: spacing.sm,
+    marginBottom: spacing.s,
   },
   resourceLink: {
     ...typography.body,
@@ -439,7 +439,7 @@ const styles = StyleSheet.create({
     ...typography.caption,
     fontSize: 13,
     color: colors.light.inkSoft,
-    marginBottom: spacing.md,
+    marginBottom: spacing.m,
   },
   resourceProse: {
     ...typography.display,
@@ -462,7 +462,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1.5,
     textTransform: 'uppercase',
     color: colors.light.inkSoft,
-    marginBottom: spacing.lg,
+    marginBottom: spacing.l,
   },
   continueBody: {
     ...typography.display,
