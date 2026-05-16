@@ -8,6 +8,7 @@ import { typography } from "../design/typography";
 import { spacing } from "../design/spacing";
 import { useAppStore } from "../lib/storage/store";
 import { getScreener } from "../lib/scoring/loader";
+import { tap } from '../lib/haptics';
 
 export default function WelcomeScreen() {
   const inProgress = useAppStore((s) => s.inProgressScreener);
@@ -160,3 +161,17 @@ const styles = StyleSheet.create({
     maxWidth: 320,
   },
 });
+
+const welcomeStyles = StyleSheet.create({
+  settingsLink: {
+    position: 'absolute',
+    bottom: 24,
+    right: 24,
+  },
+  settingsLinkText: {
+    fontSize: 13,
+    color: '#A89F94',
+    textDecorationLine: 'underline',
+  },
+});
+

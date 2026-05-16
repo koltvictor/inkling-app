@@ -137,6 +137,12 @@ export default function InterpretationScreen() {
       setInterpretation(cacheKey, response.interpretation);
       tap.arrival();
     } catch (err) {
+      console.log('[INKLING DEBUG] Fetch threw:', err);
+      if (err instanceof Error) {
+        console.log('[INKLING DEBUG] Error name:', err.name);
+        console.log('[INKLING DEBUG] Error message:', err.message);
+        console.log('[INKLING DEBUG] Error stack:', err.stack);
+      }
       setError(err instanceof Error ? err.message : 'Unknown error');
     } finally {
       setLoading(false);
