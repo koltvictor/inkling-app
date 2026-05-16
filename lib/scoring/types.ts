@@ -1,4 +1,4 @@
-export type ScreenerCategory = 'diagnostic-screener' | 'behavior-measure';
+export type ScreenerCategory = 'diagnostic-screener' | 'behavior-measure' | string;
 
 export type Response = {
   label: string;
@@ -15,22 +15,28 @@ export type Item = {
 export type SubscaleDefinition = Record<string, string[]>;
 
 export type ScreenerScoring = {
-  method: 'sum';
+  method?: 'sum';
   cutoff: number | null;
   cutoffInterpretation?: string;
+  cutoffMeaning?: string;
+  scoreRange?: { min: number; max: number };
   subscales: SubscaleDefinition | null;
 };
 
 export type Screener = {
   id: string;
-  name: string;
   shortName: string;
+  fullName?: string;
+  name?: string;
   version: string;
   estimatedMinutes: number;
-  citation: string;
-  publicDomain: boolean;
-  validityNotes: string;
-  category: ScreenerCategory;
+  category: string;
+  citation?: string;
+  copyright?: string;
+  license?: string;
+  publicDomain?: boolean;
+  validityNotes?: string;
+  instructions?: string;
   items: Item[];
   scoring: ScreenerScoring;
 };
@@ -45,4 +51,6 @@ export type ScreenerScore = {
   cutoff: number | null;
   cutoffMet: boolean;
   subscales: Record<string, number> | null;
+  safetyEndorsed: boolean;
+  safetyItemIds: string[];
 };

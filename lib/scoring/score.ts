@@ -2,12 +2,18 @@ import type { Screener, UserResponse, ScreenerScore } from './types';
 
 export function score(screener: Screener, responses: UserResponse[]): ScreenerScore {
   let total = 0;
+  const safetyItemIds: string[] = [];
+
   for (const response of responses) {
     const item = screener.items.find((i) => i.id === response.itemId);
     if (!item) continue;
     const option = item.responses[response.responseIndex];
     if (!option) continue;
     total += option.scoringValue;
+
+    if (item.safetyItem && option.scoringValue > 0) {
+      safetyItemIds.push(item.id);
+    }
   }
 
   const cutoff = screener.scoring.cutoff;
@@ -16,7 +22,14 @@ export function score(screener: Screener, responses: UserResponse[]): ScreenerSc
     ? calculateSubscales(screener, responses)
     : null;
 
-  return { totalScore: total, cutoff, cutoffMet, subscales };
+  return {
+    totalScore: total,
+    cutoff,
+    cutoffMet,
+    subscales,
+    safetyEndorsed: safetyItemIds.length > 0,
+    safetyItemIds,
+  };
 }
 
 function calculateSubscales(
@@ -25,7 +38,6 @@ function calculateSubscales(
 ): Record<string, number> {
   if (!screener.scoring.subscales) return {};
   const result: Record<string, number> = {};
-
   for (const [subscaleName, itemIds] of Object.entries(screener.scoring.subscales)) {
     let subscaleScore = 0;
     for (const itemId of itemIds) {
@@ -39,6 +51,5 @@ function calculateSubscales(
     }
     result[subscaleName] = subscaleScore;
   }
-
   return result;
 }
