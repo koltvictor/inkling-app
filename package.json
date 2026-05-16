@@ -49,6 +49,7 @@
   "devDependencies": {
     "@types/react": "~19.1.0",
     "@vitest/coverage-v8": "^4.1.6",
+    "dotenv": "^17.4.2",
     "eslint": "^9.25.0",
     "eslint-config-expo": "~10.0.0",
     "tsx": "^4.22.0",

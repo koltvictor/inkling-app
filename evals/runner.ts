@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import * as fs from 'fs';
 import * as path from 'path';
 import type { EvalProfile, EvalRunResult } from './schema';
