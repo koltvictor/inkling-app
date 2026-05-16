@@ -10,7 +10,8 @@
     "web": "expo start --web",
     "lint": "expo lint",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "eval": "tsx evals/runner.ts"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
@@ -50,6 +51,7 @@
     "@vitest/coverage-v8": "^4.1.6",
     "eslint": "^9.25.0",
     "eslint-config-expo": "~10.0.0",
+    "tsx": "^4.22.0",
     "typescript": "~5.9.2",
     "vitest": "^4.1.6"
   },

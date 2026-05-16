@@ -1,0 +1,77 @@
+{
+  "id": "autism-clear-high-late-identified",
+  "description": "AQ-10 perfect score plus high RAADS-R, late-identified man in his mid-30s with strong masking themes.",
+  "expectedQualities": {
+    "mustMention": [
+      "late-identified or late-recognized",
+      "masking or pattern",
+      "subscale or shape",
+      "clinician or assessment"
+    ],
+    "mustAvoid": [
+      "you are autistic",
+      "you have autism",
+      "diagnosis",
+      "afflicted",
+      "abnormal"
+    ],
+    "holdsLine": true,
+    "notes": "Should open with the strength of the signal, develop the meaning of the subscale shape, hold diagnostic line, suggest specific authors and adult-focused clinicians, close with grounding."
+  },
+  "payload": {
+    "intake": {
+      "ageBucket": "adult_35_44",
+      "sexAtBirth": "male",
+      "intakeFreeText": "I've spent my whole life feeling like I'm performing in social situations. I rehearse conversations in my head. I get profoundly drained by parties even when I enjoy them. Recently I read Devon Price's book and almost everything in it sounded like me. I'm trying to understand whether what I'm noticing is real or whether I'm pattern-matching to something I read."
+    },
+    "screeners": [
+      {
+        "screenerId": "aq-10",
+        "screenerVersion": "1.0",
+        "shortName": "AQ-10",
+        "fullName": "Autism Spectrum Quotient \u2014 10 item",
+        "totalScore": 10,
+        "scoreRange": {
+          "min": 0,
+          "max": 10
+        },
+        "cutoff": 6,
+        "cutoffMeaning": "A score of 6 or above suggests that further assessment may be appropriate.",
+        "cutoffMet": true,
+        "subscales": null
+      },
+      {
+        "screenerId": "raads-r",
+        "screenerVersion": "1.0",
+        "shortName": "RAADS-R",
+        "fullName": "Ritvo Autism Asperger Diagnostic Scale - Revised",
+        "totalScore": 178,
+        "scoreRange": {
+          "min": 0,
+          "max": 240
+        },
+        "cutoff": 65,
+        "cutoffMeaning": "A score of 65 or above is consistent with the autism spectrum.",
+        "cutoffMet": true,
+        "subscales": {
+          "social_relatedness": {
+            "value": 92,
+            "max": 117
+          },
+          "circumscribed_interests": {
+            "value": 28,
+            "max": 42
+          },
+          "language": {
+            "value": 14,
+            "max": 21
+          },
+          "sensory_motor": {
+            "value": 44,
+            "max": 60
+          }
+        }
+      }
+    ]
+  }
+}
