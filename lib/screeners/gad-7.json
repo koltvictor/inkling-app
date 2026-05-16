@@ -1,0 +1,176 @@
+{
+  "id": "gad-7",
+  "version": "1.0",
+  "shortName": "GAD-7",
+  "fullName": "Generalized Anxiety Disorder 7-item scale",
+  "estimatedMinutes": 2,
+  "category": "anxiety",
+  "instructions": "Over the last 2 weeks, how often have you been bothered by the following problems?",
+  "copyright": "Developed by Drs. Robert L. Spitzer, Kurt Kroenke, Janet B.W. Williams, and Bernd L\u00f6we, with an educational grant from Pfizer Inc.",
+  "license": "Public domain \u2014 no permission required to reproduce, translate, display, or distribute.",
+  "items": [
+    {
+      "id": "gad-7-1",
+      "text": "Feeling nervous, anxious, or on edge",
+      "responses": [
+        {
+          "label": "Not at all",
+          "scoringValue": 0
+        },
+        {
+          "label": "Several days",
+          "scoringValue": 1
+        },
+        {
+          "label": "More than half the days",
+          "scoringValue": 2
+        },
+        {
+          "label": "Nearly every day",
+          "scoringValue": 3
+        }
+      ]
+    },
+    {
+      "id": "gad-7-2",
+      "text": "Not being able to stop or control worrying",
+      "responses": [
+        {
+          "label": "Not at all",
+          "scoringValue": 0
+        },
+        {
+          "label": "Several days",
+          "scoringValue": 1
+        },
+        {
+          "label": "More than half the days",
+          "scoringValue": 2
+        },
+        {
+          "label": "Nearly every day",
+          "scoringValue": 3
+        }
+      ]
+    },
+    {
+      "id": "gad-7-3",
+      "text": "Worrying too much about different things",
+      "responses": [
+        {
+          "label": "Not at all",
+          "scoringValue": 0
+        },
+        {
+          "label": "Several days",
+          "scoringValue": 1
+        },
+        {
+          "label": "More than half the days",
+          "scoringValue": 2
+        },
+        {
+          "label": "Nearly every day",
+          "scoringValue": 3
+        }
+      ]
+    },
+    {
+      "id": "gad-7-4",
+      "text": "Trouble relaxing",
+      "responses": [
+        {
+          "label": "Not at all",
+          "scoringValue": 0
+        },
+        {
+          "label": "Several days",
+          "scoringValue": 1
+        },
+        {
+          "label": "More than half the days",
+          "scoringValue": 2
+        },
+        {
+          "label": "Nearly every day",
+          "scoringValue": 3
+        }
+      ]
+    },
+    {
+      "id": "gad-7-5",
+      "text": "Being so restless that it is hard to sit still",
+      "responses": [
+        {
+          "label": "Not at all",
+          "scoringValue": 0
+        },
+        {
+          "label": "Several days",
+          "scoringValue": 1
+        },
+        {
+          "label": "More than half the days",
+          "scoringValue": 2
+        },
+        {
+          "label": "Nearly every day",
+          "scoringValue": 3
+        }
+      ]
+    },
+    {
+      "id": "gad-7-6",
+      "text": "Becoming easily annoyed or irritable",
+      "responses": [
+        {
+          "label": "Not at all",
+          "scoringValue": 0
+        },
+        {
+          "label": "Several days",
+          "scoringValue": 1
+        },
+        {
+          "label": "More than half the days",
+          "scoringValue": 2
+        },
+        {
+          "label": "Nearly every day",
+          "scoringValue": 3
+        }
+      ]
+    },
+    {
+      "id": "gad-7-7",
+      "text": "Feeling afraid as if something awful might happen",
+      "responses": [
+        {
+          "label": "Not at all",
+          "scoringValue": 0
+        },
+        {
+          "label": "Several days",
+          "scoringValue": 1
+        },
+        {
+          "label": "More than half the days",
+          "scoringValue": 2
+        },
+        {
+          "label": "Nearly every day",
+          "scoringValue": 3
+        }
+      ]
+    }
+  ],
+  "scoring": {
+    "cutoff": 10,
+    "cutoffMeaning": "A score of 10 or above is the conventional threshold for considering further clinical evaluation for generalized anxiety.",
+    "scoreRange": {
+      "min": 0,
+      "max": 21
+    },
+    "subscales": null
+  }
+}

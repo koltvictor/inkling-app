@@ -9,6 +9,7 @@ export type Item = {
   id: string;
   text: string;
   responses: Response[];
+  safetyItem?: boolean;
 };
 
 export type SubscaleDefinition = Record<string, string[]>;

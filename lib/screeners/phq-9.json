@@ -1,0 +1,221 @@
+{
+  "id": "phq-9",
+  "version": "1.0",
+  "shortName": "PHQ-9",
+  "fullName": "Patient Health Questionnaire-9",
+  "estimatedMinutes": 3,
+  "category": "depression",
+  "instructions": "Over the last 2 weeks, how often have you been bothered by any of the following problems?",
+  "copyright": "Developed by Drs. Robert L. Spitzer, Janet B.W. Williams, Kurt Kroenke and colleagues, with an educational grant from Pfizer Inc.",
+  "license": "Public domain \u2014 no permission required to reproduce, translate, display, or distribute.",
+  "items": [
+    {
+      "id": "phq-9-1",
+      "text": "Little interest or pleasure in doing things",
+      "responses": [
+        {
+          "label": "Not at all",
+          "scoringValue": 0
+        },
+        {
+          "label": "Several days",
+          "scoringValue": 1
+        },
+        {
+          "label": "More than half the days",
+          "scoringValue": 2
+        },
+        {
+          "label": "Nearly every day",
+          "scoringValue": 3
+        }
+      ]
+    },
+    {
+      "id": "phq-9-2",
+      "text": "Feeling down, depressed, or hopeless",
+      "responses": [
+        {
+          "label": "Not at all",
+          "scoringValue": 0
+        },
+        {
+          "label": "Several days",
+          "scoringValue": 1
+        },
+        {
+          "label": "More than half the days",
+          "scoringValue": 2
+        },
+        {
+          "label": "Nearly every day",
+          "scoringValue": 3
+        }
+      ]
+    },
+    {
+      "id": "phq-9-3",
+      "text": "Trouble falling or staying asleep, or sleeping too much",
+      "responses": [
+        {
+          "label": "Not at all",
+          "scoringValue": 0
+        },
+        {
+          "label": "Several days",
+          "scoringValue": 1
+        },
+        {
+          "label": "More than half the days",
+          "scoringValue": 2
+        },
+        {
+          "label": "Nearly every day",
+          "scoringValue": 3
+        }
+      ]
+    },
+    {
+      "id": "phq-9-4",
+      "text": "Feeling tired or having little energy",
+      "responses": [
+        {
+          "label": "Not at all",
+          "scoringValue": 0
+        },
+        {
+          "label": "Several days",
+          "scoringValue": 1
+        },
+        {
+          "label": "More than half the days",
+          "scoringValue": 2
+        },
+        {
+          "label": "Nearly every day",
+          "scoringValue": 3
+        }
+      ]
+    },
+    {
+      "id": "phq-9-5",
+      "text": "Poor appetite or overeating",
+      "responses": [
+        {
+          "label": "Not at all",
+          "scoringValue": 0
+        },
+        {
+          "label": "Several days",
+          "scoringValue": 1
+        },
+        {
+          "label": "More than half the days",
+          "scoringValue": 2
+        },
+        {
+          "label": "Nearly every day",
+          "scoringValue": 3
+        }
+      ]
+    },
+    {
+      "id": "phq-9-6",
+      "text": "Feeling bad about yourself \u2014 or that you are a failure or have let yourself or your family down",
+      "responses": [
+        {
+          "label": "Not at all",
+          "scoringValue": 0
+        },
+        {
+          "label": "Several days",
+          "scoringValue": 1
+        },
+        {
+          "label": "More than half the days",
+          "scoringValue": 2
+        },
+        {
+          "label": "Nearly every day",
+          "scoringValue": 3
+        }
+      ]
+    },
+    {
+      "id": "phq-9-7",
+      "text": "Trouble concentrating on things, such as reading the newspaper or watching television",
+      "responses": [
+        {
+          "label": "Not at all",
+          "scoringValue": 0
+        },
+        {
+          "label": "Several days",
+          "scoringValue": 1
+        },
+        {
+          "label": "More than half the days",
+          "scoringValue": 2
+        },
+        {
+          "label": "Nearly every day",
+          "scoringValue": 3
+        }
+      ]
+    },
+    {
+      "id": "phq-9-8",
+      "text": "Moving or speaking so slowly that other people could have noticed. Or the opposite \u2014 being so fidgety or restless that you have been moving around a lot more than usual",
+      "responses": [
+        {
+          "label": "Not at all",
+          "scoringValue": 0
+        },
+        {
+          "label": "Several days",
+          "scoringValue": 1
+        },
+        {
+          "label": "More than half the days",
+          "scoringValue": 2
+        },
+        {
+          "label": "Nearly every day",
+          "scoringValue": 3
+        }
+      ]
+    },
+    {
+      "id": "phq-9-9",
+      "text": "Thoughts that you would be better off dead, or of hurting yourself in some way",
+      "safetyItem": true,
+      "responses": [
+        {
+          "label": "Not at all",
+          "scoringValue": 0
+        },
+        {
+          "label": "Several days",
+          "scoringValue": 1
+        },
+        {
+          "label": "More than half the days",
+          "scoringValue": 2
+        },
+        {
+          "label": "Nearly every day",
+          "scoringValue": 3
+        }
+      ]
+    }
+  ],
+  "scoring": {
+    "cutoff": 10,
+    "cutoffMeaning": "A score of 10 or above is the conventional threshold for considering further clinical evaluation for depression.",
+    "scoreRange": {
+      "min": 0,
+      "max": 27
+    },
+    "subscales": null
+  }
+}
