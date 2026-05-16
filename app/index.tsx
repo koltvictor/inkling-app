@@ -7,13 +7,31 @@ import { colors } from "../design/colors";
 import { typography } from "../design/typography";
 import { spacing } from "../design/spacing";
 import { useAppStore } from "../lib/storage/store";
+import { getScreener } from "../lib/scoring/loader";
 
 export default function WelcomeScreen() {
+  const inProgress = useAppStore((s) => s.inProgressScreener);
+  const completedCount = useAppStore((s) => s.completedScreeners.length);
+
+  const inProgressScreener = inProgress ? getScreener(inProgress.screenerId) : null;
+  const hasResume = !!(inProgress && inProgressScreener);
+  const hasCompleted = completedCount > 0;
+
   const handleBegin = () => {
     Haptics.selectionAsync();
     router.push("/age-gate");
   };
-  const completedCount = useAppStore((s) => s.completedScreeners.length);
+
+  const handleResume = () => {
+    if (!inProgress) return;
+    Haptics.selectionAsync();
+    router.push(`/${inProgress.screenerId}`);
+  };
+
+  const handleViewResults = () => {
+    Haptics.selectionAsync();
+    router.push("/interpretation");
+  };
 
   return (
     <SafeAreaView style={styles.container} edges={["top", "bottom"]}>
@@ -25,32 +43,49 @@ export default function WelcomeScreen() {
         <Text style={styles.tagline}>
           A quiet space to consider patterns in how your mind works.
         </Text>
-        <Text
-          style={{
-            position: "absolute",
-            bottom: 40,
-            fontSize: 11,
-            alignSelf: "center",
-            color: "#888",
-          }}
-        >
-          Persisted: {completedCount} screeners
-        </Text>
       </View>
 
       <View style={styles.footer}>
-        <Pressable
-          style={({ pressed }) => [
-            styles.button,
-            pressed && styles.buttonPressed,
-          ]}
-          onPress={handleBegin}
-        >
-          <Text style={styles.buttonLabel}>Begin</Text>
-        </Pressable>
+        <View style={styles.primaryAction}>
+          {hasResume ? (
+            <Pressable
+              style={({ pressed }) => [
+                styles.button,
+                pressed && styles.buttonPressed,
+              ]}
+              onPress={handleResume}
+            >
+              <Text style={styles.buttonLabel}>
+                Resume {inProgressScreener!.shortName}
+              </Text>
+            </Pressable>
+          ) : (
+            <Pressable
+              style={({ pressed }) => [
+                styles.button,
+                pressed && styles.buttonPressed,
+              ]}
+              onPress={handleBegin}
+            >
+              <Text style={styles.buttonLabel}>Begin</Text>
+            </Pressable>
+          )}
+          {hasResume && (
+            <Text style={styles.resumeCaption}>
+              Question {inProgress!.currentIndex + 1} of{" "}
+              {inProgressScreener!.items.length}
+            </Text>
+          )}
+        </View>
+
+        {hasCompleted && (
+          <Pressable onPress={handleViewResults} hitSlop={12}>
+            <Text style={styles.secondaryLink}>View previous results →</Text>
+          </Pressable>
+        )}
+
         <Text style={styles.disclaimer}>
-          Inkling administers validated screening instruments. It does not
-          diagnose.
+          Inkling administers validated screening instruments. It does not diagnose.
         </Text>
       </View>
     </SafeAreaView>
@@ -77,13 +112,23 @@ const styles = StyleSheet.create({
     textAlign: "center",
     maxWidth: 320,
   },
-  footer: { paddingBottom: spacing.l, gap: spacing.l },
+  footer: {
+    paddingBottom: spacing.l,
+    gap: spacing.l,
+    alignItems: "center",
+  },
+  primaryAction: {
+    gap: spacing.xs,
+    alignItems: "center",
+    alignSelf: "stretch",
+  },
   button: {
     backgroundColor: colors.light.ink,
     paddingVertical: spacing.m,
     paddingHorizontal: spacing.xl,
     borderRadius: 999,
     alignItems: "center",
+    alignSelf: "stretch",
   },
   buttonPressed: { opacity: 0.85 },
   buttonLabel: {
@@ -91,11 +136,19 @@ const styles = StyleSheet.create({
     color: colors.light.paper,
     fontWeight: "500",
   },
+  resumeCaption: {
+    ...typography.caption,
+    color: colors.light.inkSoft,
+  },
+  secondaryLink: {
+    ...typography.body,
+    color: colors.light.inkSoft,
+    textDecorationLine: "underline",
+  },
   disclaimer: {
     ...typography.caption,
     color: colors.light.inkSoft,
     textAlign: "center",
     maxWidth: 320,
-    alignSelf: "center",
   },
 });

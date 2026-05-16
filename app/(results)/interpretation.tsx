@@ -20,6 +20,18 @@ const formatSubscale = (raw: string) =>
 export default function InterpretationScreen() {
   const router = useRouter();
   const completedScreeners = useAppStore((s) => s.completedScreeners);
+  const displayedScreeners = (() => {
+    const latest = new Map<string, (typeof completedScreeners)[number]>();
+    for (const c of completedScreeners) {
+      const existing = latest.get(c.screenerId);
+      if (!existing || c.completedAt > existing.completedAt) {
+        latest.set(c.screenerId, c);
+      }
+    }
+    return Array.from(latest.values()).sort(
+      (a, b) => a.completedAt - b.completedAt
+    );
+  })();
 
   const nextScreenerId = AUTISM_PATH.find((id) => {
     const isCompleted = completedScreeners.some((s) => s.screenerId === id);
@@ -41,7 +53,7 @@ export default function InterpretationScreen() {
       <ScrollView contentContainerStyle={styles.scroll}>
         <Text style={styles.kicker}>Your responses</Text>
 
-        {completedScreeners.map((result, idx) => {
+        {displayedScreeners.map((result, idx) => {
           const screener = getScreener(result.screenerId);
           if (!screener) return null;
           const max = screener.scoring.scoreRange.max;
