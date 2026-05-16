@@ -1,7 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import { View, StyleSheet, Text, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import * as Haptics from 'expo-haptics';
 import { router, useLocalSearchParams } from 'expo-router';
 import Animated, { FadeIn } from 'react-native-reanimated';
 import { colors } from '../../design/colors';
@@ -10,6 +9,7 @@ import { spacing } from '../../design/spacing';
 import { getScreener } from '../../lib/scoring/loader';
 import { score } from '../../lib/scoring/score';
 import { useAppStore } from '../../lib/storage/store';
+import { tap } from '../../lib/haptics';
 import type { UserResponse } from '../../lib/scoring/types';
 
 export default function ScreenerScreen() {
@@ -70,15 +70,15 @@ export default function ScreenerScreen() {
   const isFirstQuestion = currentIndex === 0;
 
   const handleSelect = (responseIndex: number) => {
-    Haptics.selectionAsync();
+    tap.selection();
     recordResponse(currentItem.id, responseIndex);
   };
 
   const handleContinue = () => {
     if (!hasSelected) return;
-    Haptics.selectionAsync();
 
     if (isLastQuestion) {
+      tap.commit();
       const userResponses: UserResponse[] = screener.items.map((item) => ({
         itemId: item.id,
         responseIndex: responses[item.id]!,
@@ -98,18 +98,19 @@ export default function ScreenerScreen() {
 
       router.replace('/interpretation');
     } else {
+      tap.selection();
       setScreenerIndex(currentIndex + 1);
     }
   };
 
   const handleBack = () => {
     if (isFirstQuestion) return;
-    Haptics.selectionAsync();
+    tap.selection();
     setScreenerIndex(currentIndex - 1);
   };
 
   const handleSaveQuit = () => {
-    Haptics.selectionAsync();
+    tap.selection();
     router.back();
   };
 

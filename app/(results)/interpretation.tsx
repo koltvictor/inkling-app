@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { View, Text, StyleSheet, Pressable, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Pressable, ScrollView, Linking } from 'react-native';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useAppStore } from '../../lib/storage/store';
+import { tap } from '../../lib/haptics';
 import { getScreener } from '../../lib/scoring/loader';
 import {
   buildInterpretPayload,
@@ -15,12 +16,80 @@ import { spacing } from '../../design/spacing';
 
 const AUTISM_PATH = ['aq-10', 'raads-r', 'cat-q'];
 
+const AUTISM_RESOURCES = {
+  books: [
+    { title: 'Unmasking Autism', author: 'Devon Price' },
+    { title: 'Divergent Mind', author: 'Jenara Nerenberg' },
+    { title: 'I Think I Might Be Autistic', author: 'Cynthia Kim' },
+  ],
+  communities: [
+    {
+      name: 'r/AutismInWomen',
+      note: 'reflective Reddit community, broadly inclusive',
+      url: 'https://www.reddit.com/r/AutismInWomen/',
+    },
+    {
+      name: 'Asperger/Autism Network (AANE)',
+      note: 'peer forums and provider directory',
+      url: 'https://www.aane.org/',
+    },
+    {
+      name: 'Autistic Self Advocacy Network',
+      note: 'autistic-led, advocacy and resources',
+      url: 'https://autisticadvocacy.org/',
+    },
+  ],
+};
+
 const formatSubscale = (raw: string) =>
   raw
     .split('_')
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
     .join(' ')
     .replace('Sensory Motor', 'Sensory-Motor');
+
+const openUrl = (url: string) => {
+  Linking.openURL(url).catch(() => {});
+};
+
+function ResourcesSection() {
+  return (
+    <View style={styles.resourcesSection}>
+      <View style={styles.rule} />
+      <Text style={styles.kicker}>Some places to explore</Text>
+
+      <Text style={styles.resourceCategory}>Books and first-hand accounts</Text>
+      <View style={styles.resourceGroup}>
+        {AUTISM_RESOURCES.books.map((book) => (
+          <Text key={book.title} style={styles.resourceItem}>
+            {book.title}
+            <Text style={styles.resourceMeta}> — {book.author}</Text>
+          </Text>
+        ))}
+      </View>
+
+      <Text style={styles.resourceCategory}>Online communities</Text>
+      <View style={styles.resourceGroup}>
+        {AUTISM_RESOURCES.communities.map((c) => (
+          <Pressable
+            key={c.name}
+            onPress={() => openUrl(c.url)}
+            hitSlop={8}
+            style={({ pressed }) => [pressed && styles.pressed]}
+          >
+            <Text style={styles.resourceLink}>{c.name}</Text>
+            <Text style={styles.resourceMeta}>{c.note}</Text>
+          </Pressable>
+        ))}
+      </View>
+
+      <Text style={styles.resourceCategory}>When you are ready for a clinician</Text>
+      <Text style={styles.resourceProse}>
+        Look specifically for providers who specialize in adult autism assessment. Many clinicians trained in older frameworks still miss adult presentations, particularly in people who have masked well. The AANE directory above is a reasonable starting point, and word-of-mouth from late-identified adults in your area often surfaces the right names.
+      </Text>
+    </View>
+  );
+}
 
 export default function InterpretationScreen() {
   const router = useRouter();
@@ -66,6 +135,7 @@ export default function InterpretationScreen() {
       });
       const response = await fetchInterpretation(payload);
       setInterpretation(cacheKey, response.interpretation);
+      tap.arrival();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unknown error');
     } finally {
@@ -187,9 +257,11 @@ export default function InterpretationScreen() {
           </View>
         )}
 
+        {cached && <ResourcesSection />}
+
         {nextScreener && (
           <View style={styles.continueSection}>
-            <Text style={styles.continueLabel}>Continue if you'd like</Text>
+            <Text style={styles.continueLabel}>Continue if you would like</Text>
             <Text style={styles.continueBody}>
               Inkling can administer the {nextScreener.fullName} ({nextScreener.shortName}) for a fuller picture. {nextScreener.items.length} items, about {nextScreener.estimatedMinutes} minutes.
             </Text>
@@ -322,6 +394,43 @@ const styles = StyleSheet.create({
     ...typography.body,
     color: colors.light.ink,
     textDecorationLine: 'underline',
+  },
+  resourcesSection: { marginBottom: spacing.xxxl },
+  resourceCategory: {
+    ...typography.body,
+    fontSize: 14,
+    fontWeight: '600',
+    color: colors.light.ink,
+    marginBottom: spacing.md,
+    marginTop: spacing.lg,
+  },
+  resourceGroup: { marginBottom: spacing.md },
+  resourceItem: {
+    ...typography.body,
+    fontSize: 16,
+    color: colors.light.ink,
+    marginBottom: spacing.sm,
+  },
+  resourceLink: {
+    ...typography.body,
+    fontSize: 16,
+    color: colors.light.ink,
+    textDecorationLine: 'underline',
+    marginBottom: 2,
+  },
+  resourceMeta: {
+    ...typography.caption,
+    fontSize: 13,
+    color: colors.light.inkSoft,
+    marginBottom: spacing.md,
+  },
+  resourceProse: {
+    ...typography.display,
+    fontSize: 16,
+    lineHeight: 24,
+    letterSpacing: 0,
+    color: colors.light.ink,
+    marginTop: spacing.xs,
   },
   continueSection: {
     marginTop: spacing.xl,
