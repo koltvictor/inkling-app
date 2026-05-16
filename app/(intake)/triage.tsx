@@ -10,43 +10,63 @@ import {
   ScrollView,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import * as Haptics from 'expo-haptics';
 import { router } from 'expo-router';
 import { colors } from '../../design/colors';
 import { typography } from '../../design/typography';
 import { spacing } from '../../design/spacing';
 import { useAppStore } from '../../lib/storage/store';
 import { prefilter } from '../../lib/crisis/prefilter';
+import { tap } from '../../lib/haptics';
+import { getAllPaths, type PathId } from '../../lib/paths';
+import { getScreener } from '../../lib/scoring/loader';
 
 const MAX_LENGTH = 2000;
 const MIN_LENGTH = 10;
 
 export default function TriageScreen() {
   const [text, setText] = useState('');
-  const setIntakeFreeText = useAppStore((s) => s.setIntakeFreeText);
+  const [pathId, setPathId] = useState<PathId | null>(null);
 
-  const canContinue = text.trim().length >= MIN_LENGTH;
+  const setIntakeFreeText = useAppStore((s) => s.setIntakeFreeText);
+  const setSelectedPath = useAppStore((s) => s.setSelectedPath);
+  const completedScreeners = useAppStore((s) => s.completedScreeners);
+
+  const paths = getAllPaths();
+  const textOk = text.trim().length >= MIN_LENGTH;
+  const canContinue = textOk && pathId !== null;
   const charsRemaining = MAX_LENGTH - text.length;
 
-  const handleContinue = () => {
-    if (!canContinue) return;
-    Haptics.selectionAsync();
+  const handleSelectPath = (id: PathId) => {
+    tap.selection();
+    setPathId(id);
+  };
 
-    // Layer 1: deterministic prefilter — runs locally, never reaches Claude
+  const handleContinue = () => {
+    if (!canContinue || pathId === null) return;
+    tap.commit();
+
     const filterResult = prefilter(text);
     if (filterResult.triggered) {
-      // Don't store the text; route immediately to crisis resources
       router.replace('/resources');
       return;
     }
 
-    // Store the text for Week 2 /triage call
     setIntakeFreeText(text.trim());
+    setSelectedPath(pathId);
 
-    // TODO Week 2: POST to /triage endpoint with text + demographics,
-    // route based on Claude's recommendedScreeners (or crisisFlag).
-    // For now, route directly to AQ-10 (the only Phase 1 path).
-    router.replace('/aq-10');
+    const path = paths.find((p) => p.id === pathId);
+    if (!path) return;
+
+    const completedIds = new Set(completedScreeners.map((s) => s.screenerId));
+    const nextScreenerId = path.screenerIds.find(
+      (id) => !completedIds.has(id) && getScreener(id) !== undefined
+    );
+
+    if (nextScreenerId) {
+      router.replace(`/${nextScreenerId}` as any);
+    } else {
+      router.replace('/interpretation');
+    }
   };
 
   return (
@@ -62,7 +82,7 @@ export default function TriageScreen() {
           <View style={styles.header}>
             <Text style={styles.title}>What brings you to Inkling today?</Text>
             <Text style={styles.subhead}>
-              In your own words. A sentence or a paragraph — whatever feels right. This helps Inkling suggest the right screening instruments for what you're noticing.
+              In your own words. A sentence or a paragraph — whatever feels right. This helps Inkling understand the context behind what you are noticing.
             </Text>
           </View>
 
@@ -83,6 +103,51 @@ export default function TriageScreen() {
               ? 'A few sentences is plenty.'
               : `${charsRemaining} characters left`}
           </Text>
+
+          <View style={styles.rule} />
+
+          <View style={styles.pathSection}>
+            <Text style={styles.pathQuestion}>
+              And which of these feels most relevant to you right now?
+            </Text>
+            <Text style={styles.pathHelp}>
+              You can change paths later. Inkling can also screen for the others once you finish.
+            </Text>
+          </View>
+
+          <View style={styles.pathCards}>
+            {paths.map((path) => {
+              const isSelected = pathId === path.id;
+              return (
+                <Pressable
+                  key={path.id}
+                  onPress={() => handleSelectPath(path.id)}
+                  style={({ pressed }) => [
+                    styles.pathCard,
+                    isSelected && styles.pathCardSelected,
+                    pressed && styles.pathCardPressed,
+                  ]}
+                >
+                  <Text
+                    style={[
+                      styles.pathCardLabel,
+                      isSelected && styles.pathCardLabelSelected,
+                    ]}
+                  >
+                    {path.label}
+                  </Text>
+                  <Text
+                    style={[
+                      styles.pathCardDescription,
+                      isSelected && styles.pathCardDescriptionSelected,
+                    ]}
+                  >
+                    {path.shortDescription}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </View>
         </ScrollView>
 
         <View style={styles.footer}>
@@ -118,7 +183,7 @@ const styles = StyleSheet.create({
   title: { ...typography.headline, color: colors.light.ink, fontSize: 26 },
   subhead: { ...typography.body, color: colors.light.inkSoft, lineHeight: 24 },
   input: {
-    minHeight: 180,
+    minHeight: 140,
     backgroundColor: colors.light.paperDim,
     borderRadius: 12,
     padding: spacing.m,
@@ -128,6 +193,54 @@ const styles = StyleSheet.create({
     borderColor: colors.light.rule,
   },
   counter: { ...typography.caption, color: colors.light.inkSoft, textAlign: 'right' },
+  rule: {
+    height: 1,
+    backgroundColor: colors.light.rule,
+    marginTop: spacing.l,
+    marginBottom: spacing.s,
+  },
+  pathSection: { gap: spacing.xs },
+  pathQuestion: {
+    ...typography.headline,
+    color: colors.light.ink,
+    fontSize: 20,
+    lineHeight: 28,
+  },
+  pathHelp: {
+    ...typography.body,
+    color: colors.light.inkSoft,
+    lineHeight: 22,
+    fontSize: 14,
+  },
+  pathCards: { gap: spacing.m, marginTop: spacing.s },
+  pathCard: {
+    paddingVertical: spacing.m,
+    paddingHorizontal: spacing.l,
+    borderRadius: 12,
+    backgroundColor: colors.light.paperDim,
+    borderWidth: 1,
+    borderColor: colors.light.rule,
+    gap: spacing.xs,
+  },
+  pathCardSelected: {
+    backgroundColor: colors.light.ink,
+    borderColor: colors.light.ink,
+  },
+  pathCardPressed: { opacity: 0.85 },
+  pathCardLabel: {
+    ...typography.body,
+    color: colors.light.ink,
+    fontWeight: '500',
+    fontSize: 17,
+  },
+  pathCardLabelSelected: { color: colors.light.paper },
+  pathCardDescription: {
+    ...typography.body,
+    color: colors.light.inkSoft,
+    fontSize: 14,
+    lineHeight: 20,
+  },
+  pathCardDescriptionSelected: { color: colors.light.paperDim },
   footer: { paddingBottom: spacing.l, paddingTop: spacing.s },
   continueButton: {
     backgroundColor: colors.light.ink,

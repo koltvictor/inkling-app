@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import type { UserResponse } from '../scoring/types';
+import type { PathId } from '../paths';
 import { sqliteStorage } from './persist';
 
 export type AgeBucket = '18-29' | '30-39' | '40-49' | '50-59' | '60-69' | '70+';
@@ -44,6 +45,7 @@ type AppState = {
   ageAttestedAt: number | null;
   sexAtBirth: SexAtBirth | null;
   intakeFreeText: string | null;
+  selectedPath: PathId | null;
   completedScreeners: CompletedScreener[];
   inProgressScreener: InProgressScreener | null;
   interpretations: Record<string, InterpretationEntry>;
@@ -51,6 +53,7 @@ type AppState = {
   setAge: (bucket: AgeBucket) => void;
   setSexAtBirth: (s: SexAtBirth) => void;
   setIntakeFreeText: (text: string) => void;
+  setSelectedPath: (path: PathId | null) => void;
 
   startOrResumeScreener: (screenerId: string) => void;
   setScreenerIndex: (n: number) => void;
@@ -71,6 +74,7 @@ export const useAppStore = create<AppState>()(
       ageAttestedAt: null,
       sexAtBirth: null,
       intakeFreeText: null,
+      selectedPath: null,
       completedScreeners: [],
       inProgressScreener: null,
       interpretations: {},
@@ -78,6 +82,7 @@ export const useAppStore = create<AppState>()(
       setAge: (bucket) => set({ ageBucket: bucket, ageAttestedAt: Date.now() }),
       setSexAtBirth: (s) => set({ sexAtBirth: s }),
       setIntakeFreeText: (text) => set({ intakeFreeText: text }),
+      setSelectedPath: (path) => set({ selectedPath: path }),
 
       startOrResumeScreener: (screenerId) =>
         set((state) => {
@@ -138,6 +143,7 @@ export const useAppStore = create<AppState>()(
           ageAttestedAt: null,
           sexAtBirth: null,
           intakeFreeText: null,
+          selectedPath: null,
           completedScreeners: [],
           inProgressScreener: null,
           interpretations: {},
@@ -151,6 +157,7 @@ export const useAppStore = create<AppState>()(
         ageAttestedAt: state.ageAttestedAt,
         sexAtBirth: state.sexAtBirth,
         intakeFreeText: state.intakeFreeText,
+        selectedPath: state.selectedPath,
         completedScreeners: state.completedScreeners,
         inProgressScreener: state.inProgressScreener,
         interpretations: state.interpretations,

@@ -1,45 +1,28 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { View, Text, StyleSheet, Pressable, ScrollView, Linking } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Pressable,
+  ScrollView,
+  Linking,
+} from 'react-native';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useAppStore } from '../../lib/storage/store';
-import { tap } from '../../lib/haptics';
+import type { CompletedScreener } from '../../lib/storage/store';
 import { getScreener } from '../../lib/scoring/loader';
 import {
   buildInterpretPayload,
   computeInterpretationCacheKey,
   fetchInterpretation,
 } from '../../lib/api/client';
+import { tap } from '../../lib/haptics';
+import { getAllPaths, pathForScreener, type PathId, type Path } from '../../lib/paths';
+import { getResourcesForPath, type PathResources } from '../../lib/resources';
 import { colors } from '../../design/colors';
 import { typography } from '../../design/typography';
 import { spacing } from '../../design/spacing';
-
-const AUTISM_PATH = ['aq-10', 'raads-r', 'cat-q'];
-
-const AUTISM_RESOURCES = {
-  books: [
-    { title: 'Unmasking Autism', author: 'Devon Price' },
-    { title: 'Divergent Mind', author: 'Jenara Nerenberg' },
-    { title: 'I Think I Might Be Autistic', author: 'Cynthia Kim' },
-  ],
-  communities: [
-    {
-      name: 'r/AutismInWomen',
-      note: 'reflective Reddit community, broadly inclusive',
-      url: 'https://www.reddit.com/r/AutismInWomen/',
-    },
-    {
-      name: 'Asperger/Autism Network (AANE)',
-      note: 'peer forums and provider directory',
-      url: 'https://www.aane.org/',
-    },
-    {
-      name: 'Autistic Self Advocacy Network',
-      note: 'autistic-led, advocacy and resources',
-      url: 'https://autisticadvocacy.org/',
-    },
-  ],
-};
 
 const formatSubscale = (raw: string) =>
   raw
@@ -49,10 +32,21 @@ const formatSubscale = (raw: string) =>
     .replace('Sensory Motor', 'Sensory-Motor');
 
 const openUrl = (url: string) => {
+  tap.selection();
   Linking.openURL(url).catch(() => {});
 };
 
-function ResourcesSection() {
+function inferPathFromCompleted(completed: CompletedScreener[]): PathId | null {
+  if (completed.length === 0) return null;
+  const sorted = [...completed].sort((a, b) => b.completedAt - a.completedAt);
+  for (const result of sorted) {
+    const pathId = pathForScreener(result.screenerId);
+    if (pathId) return pathId;
+  }
+  return null;
+}
+
+function ResourcesSection({ resources }: { resources: PathResources }) {
   return (
     <View style={styles.resourcesSection}>
       <View style={styles.rule} />
@@ -60,33 +54,33 @@ function ResourcesSection() {
 
       <Text style={styles.resourceCategory}>Books and first-hand accounts</Text>
       <View style={styles.resourceGroup}>
-        {AUTISM_RESOURCES.books.map((book) => (
+        {resources.books.map((book) => (
           <Text key={book.title} style={styles.resourceItem}>
             {book.title}
-            <Text style={styles.resourceMeta}> — {book.author}</Text>
+            {book.author ? (
+              <Text style={styles.resourceMeta}> {'\u2014'} {book.author}</Text>
+            ) : null}
           </Text>
         ))}
       </View>
 
-      <Text style={styles.resourceCategory}>Online communities</Text>
+      <Text style={styles.resourceCategory}>Communities and organizations</Text>
       <View style={styles.resourceGroup}>
-        {AUTISM_RESOURCES.communities.map((c) => (
+        {resources.communities.map((c) => (
           <Pressable
-            key={c.name}
-            onPress={() => openUrl(c.url)}
+            key={c.title}
+            onPress={() => (c.url ? openUrl(c.url) : undefined)}
             hitSlop={8}
             style={({ pressed }) => [pressed && styles.pressed]}
           >
-            <Text style={styles.resourceLink}>{c.name}</Text>
-            <Text style={styles.resourceMeta}>{c.note}</Text>
+            <Text style={c.url ? styles.resourceLink : styles.resourceItem}>{c.title}</Text>
+            {c.note ? <Text style={styles.resourceMeta}>{c.note}</Text> : null}
           </Pressable>
         ))}
       </View>
 
       <Text style={styles.resourceCategory}>When you are ready for a clinician</Text>
-      <Text style={styles.resourceProse}>
-        Look specifically for providers who specialize in adult autism assessment. Many clinicians trained in older frameworks still miss adult presentations, particularly in people who have masked well. The AANE directory above is a reasonable starting point, and word-of-mouth from late-identified adults in your area often surfaces the right names.
-      </Text>
+      <Text style={styles.resourceProse}>{resources.clinicalGuidance}</Text>
     </View>
   );
 }
@@ -97,6 +91,7 @@ export default function InterpretationScreen() {
   const ageBucket = useAppStore((s) => s.ageBucket);
   const sexAtBirth = useAppStore((s) => s.sexAtBirth);
   const intakeFreeText = useAppStore((s) => s.intakeFreeText);
+  const storeSelectedPath = useAppStore((s) => s.selectedPath);
   const interpretations = useAppStore((s) => s.interpretations);
   const setInterpretation = useAppStore((s) => s.setInterpretation);
 
@@ -112,6 +107,18 @@ export default function InterpretationScreen() {
       (a, b) => a.completedAt - b.completedAt
     );
   }, [completedScreeners]);
+
+  const activePathId: PathId | null = useMemo(
+    () => storeSelectedPath ?? inferPathFromCompleted(displayedScreeners),
+    [storeSelectedPath, displayedScreeners]
+  );
+
+  const activePath: Path | null = useMemo(() => {
+    if (!activePathId) return null;
+    return getAllPaths().find((p) => p.id === activePathId) ?? null;
+  }, [activePathId]);
+
+  const pathResources = activePathId ? getResourcesForPath(activePathId) : null;
 
   const cacheKey = useMemo(
     () => computeInterpretationCacheKey(displayedScreeners),
@@ -162,16 +169,20 @@ export default function InterpretationScreen() {
     }
   }, [cached, loading, error, displayedScreeners.length, fetchAndCache]);
 
-  const nextScreenerId = AUTISM_PATH.find((id) => {
+  const nextScreenerId = activePath?.screenerIds.find((id) => {
     const isCompleted = completedScreeners.some((s) => s.screenerId === id);
     const isLoaded = getScreener(id) !== undefined;
     return !isCompleted && isLoaded;
   });
   const nextScreener = nextScreenerId ? getScreener(nextScreenerId) : undefined;
 
-  const handleHome = () => router.replace('/');
+  const handleHome = () => {
+    tap.selection();
+    router.replace('/');
+  };
   const handleNext = () => {
-    if (nextScreenerId) router.push(`/${nextScreenerId}`);
+    tap.selection();
+    if (nextScreenerId) router.push(`/${nextScreenerId}` as any);
   };
 
   return (
@@ -182,7 +193,7 @@ export default function InterpretationScreen() {
         {displayedScreeners.map((result, idx) => {
           const screener = getScreener(result.screenerId);
           if (!screener) return null;
-          const max = screener.scoring.scoreRange.max;
+          const max = screener.scoring.scoreRange?.max ?? 0;
           const cutoff = screener.scoring.cutoff;
           const hasFullName =
             screener.fullName && screener.fullName !== screener.shortName;
@@ -256,27 +267,27 @@ export default function InterpretationScreen() {
                   Inkling could not generate an interpretation just now.
                 </Text>
                 <Pressable onPress={fetchAndCache} hitSlop={12}>
-                  <Text style={styles.retryLink}>Try again -></Text>
+                  <Text style={styles.retryLink}>Try again {'\u2192'}</Text>
                 </Pressable>
               </View>
             ) : null}
           </View>
         )}
 
-        {cached && <ResourcesSection />}
+        {cached && pathResources && <ResourcesSection resources={pathResources} />}
 
         {nextScreener && (
           <View style={styles.continueSection}>
             <Text style={styles.continueLabel}>Continue if you would like</Text>
             <Text style={styles.continueBody}>
-              Inkling can administer the {nextScreener.fullName} ({nextScreener.shortName}) for a fuller picture. {nextScreener.items.length} items, about {nextScreener.estimatedMinutes} minutes.
+              Inkling can administer the {nextScreener.fullName ?? nextScreener.shortName} ({nextScreener.shortName}) for a fuller picture. {nextScreener.items.length} items, about {nextScreener.estimatedMinutes} minutes.
             </Text>
             <Pressable
               onPress={handleNext}
               style={({ pressed }) => [styles.cta, pressed && styles.pressed]}
               hitSlop={12}
             >
-              <Text style={styles.ctaText}>Begin {nextScreener.shortName} -></Text>
+              <Text style={styles.ctaText}>Begin {nextScreener.shortName} {'\u2192'}</Text>
             </Pressable>
           </View>
         )}
@@ -284,7 +295,7 @@ export default function InterpretationScreen() {
         <View style={styles.footer}>
           <Pressable onPress={handleHome} hitSlop={12}>
             <Text style={styles.secondaryLink}>
-              {nextScreener ? 'Stop here and go home' : 'Done - go home'}
+              {nextScreener ? 'Stop here and go home' : 'Done — go home'}
             </Text>
           </Pressable>
         </View>
