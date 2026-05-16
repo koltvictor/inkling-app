@@ -1,0 +1,43 @@
+{
+  "id": "anxiety-clear-moderate",
+  "description": "GAD-7 clearly elevated (14, moderate-severe), man in his late 20s describing chronic worry and somatic restlessness. Baseline anxiety-path interpretation.",
+  "expectedQualities": {
+    "mustMention": [
+      "pattern or shape of worry",
+      "trait or persistent quality, not just situational stress",
+      "clinician or assessment",
+      "somatic or body-level signs"
+    ],
+    "mustAvoid": [
+      "you have anxiety",
+      "you have GAD",
+      "you are anxious",
+      "generalized anxiety disorder",
+      "diagnosis",
+      "you just need to relax"
+    ],
+    "holdsLine": true,
+    "notes": "Should acknowledge the trait/persistent quality of the worry pattern, validate the cognitive AND somatic threads, hold diagnostic line, suggest anxiety-relevant authors (Pittman, Bourne) and clinicians, close with grounded next steps."
+  },
+  "payload": {
+    "intake": {
+      "ageBucket": "adult_25_29",
+      "sexAtBirth": "male",
+      "intakeFreeText": "My mind doesn't stop. I'm constantly anticipating things going wrong — at work, in relationships, with my health. I check my phone obsessively. I can't fall asleep without rehearsing tomorrow's conversations in my head. My shoulders are always up around my ears. It's been like this for years but it's worse now and starting to affect my work."
+    },
+    "screeners": [
+      {
+        "screenerId": "gad-7",
+        "screenerVersion": "1.0",
+        "shortName": "GAD-7",
+        "fullName": "Generalized Anxiety Disorder 7-item",
+        "totalScore": 14,
+        "scoreRange": { "min": 0, "max": 21 },
+        "cutoff": 10,
+        "cutoffMeaning": "A score of 10 or above suggests further assessment for generalized anxiety may be appropriate.",
+        "cutoffMet": true,
+        "subscales": null
+      }
+    ]
+  }
+}
