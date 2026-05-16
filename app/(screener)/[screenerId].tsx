@@ -103,12 +103,14 @@ export default function ScreenerScreen() {
   };
 
   const handleBack = () => {
+    if (isFirstQuestion) return;
     Haptics.selectionAsync();
-    if (isFirstQuestion) {
-      router.back();
-    } else {
-      setScreenerIndex(currentIndex - 1);
-    }
+    setScreenerIndex(currentIndex - 1);
+  };
+
+  const handleSaveQuit = () => {
+    Haptics.selectionAsync();
+    router.back();
   };
 
   const total = screener.items.length;
@@ -117,21 +119,21 @@ export default function ScreenerScreen() {
   return (
     <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
       <View style={styles.header}>
-        <Pressable
-          style={styles.backButton}
-          onPress={handleBack}
-          hitSlop={12}
-        >
-          <Text style={styles.backLabel}>
-            ← {isFirstQuestion ? 'Exit' : 'Back'}
-          </Text>
-          {isFirstQuestion && (
-            <Text style={styles.backSubLabel}>Saves your progress</Text>
+        <View style={styles.headerSlotLeft}>
+          {!isFirstQuestion && (
+            <Pressable onPress={handleBack} hitSlop={12}>
+              <Text style={styles.backLabel}>{'\u2190'} Back</Text>
+            </Pressable>
           )}
-        </Pressable>
+        </View>
         <Text style={styles.progress}>
           {padded(currentIndex + 1)} / {padded(total)}
         </Text>
+        <View style={styles.headerSlotRight}>
+          <Pressable onPress={handleSaveQuit} hitSlop={12}>
+            <Text style={styles.saveQuitLabel}>Save & quit</Text>
+          </Pressable>
+        </View>
       </View>
 
       <Animated.View
@@ -198,24 +200,24 @@ const styles = StyleSheet.create({
   title: { ...typography.headline, color: colors.light.ink },
   header: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     paddingTop: spacing.m,
     paddingBottom: spacing.l,
   },
-  backButton: { paddingVertical: spacing.xs, paddingRight: spacing.m },
+  headerSlotLeft: { flex: 1, alignItems: 'flex-start' },
+  headerSlotRight: { flex: 1, alignItems: 'flex-end' },
   backLabel: { ...typography.body, color: colors.light.ink, fontWeight: '500' },
-  backSubLabel: {
-    ...typography.caption,
-    fontSize: 11,
+  saveQuitLabel: {
+    ...typography.body,
     color: colors.light.inkSoft,
-    marginTop: 2,
+    textDecorationLine: 'underline',
   },
   progress: {
     ...typography.caption,
     color: colors.light.inkSoft,
     fontVariant: ['tabular-nums'],
-    paddingTop: spacing.xs,
+    flex: 1,
+    textAlign: 'center',
   },
   questionBlock: { flex: 1, justifyContent: 'center', gap: spacing.xl },
   questionText: {
@@ -233,10 +235,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.light.rule,
   },
-  optionSelected: {
-    backgroundColor: colors.light.ink,
-    borderColor: colors.light.ink,
-  },
+  optionSelected: { backgroundColor: colors.light.ink, borderColor: colors.light.ink },
   optionPressed: { opacity: 0.85 },
   optionLabel: { ...typography.body, color: colors.light.ink },
   optionLabelSelected: { color: colors.light.paper },
