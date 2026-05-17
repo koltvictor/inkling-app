@@ -1,0 +1,47 @@
+{
+  "id": "pcl-5",
+  "name": "PTSD Checklist for DSM-5",
+  "shortName": "PCL-5",
+  "version": "1.0",
+  "estimatedMinutes": 8,
+  "citation": "Weathers, F. W., Litz, B. T., Keane, T. M., Palmieri, P. A., Marx, B. P., & Schnurr, P. P. (2013). The PTSD Checklist for DSM-5 (PCL-5). National Center for PTSD. Available from https://www.ptsd.va.gov/",
+  "publicDomain": true,
+  "validityNotes": "The PCL-5 is a 20-item self-report measure of the 20 DSM-5 PTSD symptoms, developed by the National Center for PTSD (US Department of Veterans Affairs). Original validation showed strong internal consistency (α = .94 to .96), test-retest reliability, and convergent/discriminant validity (Blevins et al. 2015; Bovin et al. 2016). A total score cutoff of 31-33 indicates probable PTSD; 33 is the operational standard in most clinical settings. The PCL-5 is calibrated for past traumatic experience and cannot reliably distinguish post-traumatic patterns from responses to currently-unsafe situations (ongoing abuse, active threat); clinical interpretation must hold this distinction. The gold standard for diagnosis remains the Clinician-Administered PTSD Scale (CAPS-5).",
+  "category": "diagnostic-screener",
+  "instructions": "These questions ask about a stressful or traumatic experience you may have been thinking about. Keeping that experience in mind, please indicate how much you have been bothered by each problem in the past month.",
+  "items": [
+    { "id": "pcl5-1", "text": "Repeated, disturbing, and unwanted memories of the stressful experience?", "responses": [{"label":"Not at all","scoringValue":0},{"label":"A little bit","scoringValue":1},{"label":"Moderately","scoringValue":2},{"label":"Quite a bit","scoringValue":3},{"label":"Extremely","scoringValue":4}] },
+    { "id": "pcl5-2", "text": "Repeated, disturbing dreams of the stressful experience?", "responses": [{"label":"Not at all","scoringValue":0},{"label":"A little bit","scoringValue":1},{"label":"Moderately","scoringValue":2},{"label":"Quite a bit","scoringValue":3},{"label":"Extremely","scoringValue":4}] },
+    { "id": "pcl5-3", "text": "Suddenly feeling or acting as if the stressful experience were actually happening again (as if you were actually back there reliving it)?", "responses": [{"label":"Not at all","scoringValue":0},{"label":"A little bit","scoringValue":1},{"label":"Moderately","scoringValue":2},{"label":"Quite a bit","scoringValue":3},{"label":"Extremely","scoringValue":4}] },
+    { "id": "pcl5-4", "text": "Feeling very upset when something reminded you of the stressful experience?", "responses": [{"label":"Not at all","scoringValue":0},{"label":"A little bit","scoringValue":1},{"label":"Moderately","scoringValue":2},{"label":"Quite a bit","scoringValue":3},{"label":"Extremely","scoringValue":4}] },
+    { "id": "pcl5-5", "text": "Having strong physical reactions when something reminded you of the stressful experience (for example, heart pounding, trouble breathing, sweating)?", "responses": [{"label":"Not at all","scoringValue":0},{"label":"A little bit","scoringValue":1},{"label":"Moderately","scoringValue":2},{"label":"Quite a bit","scoringValue":3},{"label":"Extremely","scoringValue":4}] },
+    { "id": "pcl5-6", "text": "Avoiding memories, thoughts, or feelings related to the stressful experience?", "responses": [{"label":"Not at all","scoringValue":0},{"label":"A little bit","scoringValue":1},{"label":"Moderately","scoringValue":2},{"label":"Quite a bit","scoringValue":3},{"label":"Extremely","scoringValue":4}] },
+    { "id": "pcl5-7", "text": "Avoiding external reminders of the stressful experience (for example, people, places, conversations, activities, objects, or situations)?", "responses": [{"label":"Not at all","scoringValue":0},{"label":"A little bit","scoringValue":1},{"label":"Moderately","scoringValue":2},{"label":"Quite a bit","scoringValue":3},{"label":"Extremely","scoringValue":4}] },
+    { "id": "pcl5-8", "text": "Trouble remembering important parts of the stressful experience?", "responses": [{"label":"Not at all","scoringValue":0},{"label":"A little bit","scoringValue":1},{"label":"Moderately","scoringValue":2},{"label":"Quite a bit","scoringValue":3},{"label":"Extremely","scoringValue":4}] },
+    { "id": "pcl5-9", "text": "Having strong negative beliefs about yourself, other people, or the world (for example, having thoughts such as: I am bad, there is something seriously wrong with me, no one can be trusted, the world is completely dangerous)?", "responses": [{"label":"Not at all","scoringValue":0},{"label":"A little bit","scoringValue":1},{"label":"Moderately","scoringValue":2},{"label":"Quite a bit","scoringValue":3},{"label":"Extremely","scoringValue":4}] },
+    { "id": "pcl5-10", "text": "Blaming yourself or someone else for the stressful experience or what happened after it?", "responses": [{"label":"Not at all","scoringValue":0},{"label":"A little bit","scoringValue":1},{"label":"Moderately","scoringValue":2},{"label":"Quite a bit","scoringValue":3},{"label":"Extremely","scoringValue":4}] },
+    { "id": "pcl5-11", "text": "Having strong negative feelings such as fear, horror, anger, guilt, or shame?", "responses": [{"label":"Not at all","scoringValue":0},{"label":"A little bit","scoringValue":1},{"label":"Moderately","scoringValue":2},{"label":"Quite a bit","scoringValue":3},{"label":"Extremely","scoringValue":4}] },
+    { "id": "pcl5-12", "text": "Loss of interest in activities that you used to enjoy?", "responses": [{"label":"Not at all","scoringValue":0},{"label":"A little bit","scoringValue":1},{"label":"Moderately","scoringValue":2},{"label":"Quite a bit","scoringValue":3},{"label":"Extremely","scoringValue":4}] },
+    { "id": "pcl5-13", "text": "Feeling distant or cut off from other people?", "responses": [{"label":"Not at all","scoringValue":0},{"label":"A little bit","scoringValue":1},{"label":"Moderately","scoringValue":2},{"label":"Quite a bit","scoringValue":3},{"label":"Extremely","scoringValue":4}] },
+    { "id": "pcl5-14", "text": "Trouble experiencing positive feelings (for example, being unable to feel happiness or have loving feelings for people close to you)?", "responses": [{"label":"Not at all","scoringValue":0},{"label":"A little bit","scoringValue":1},{"label":"Moderately","scoringValue":2},{"label":"Quite a bit","scoringValue":3},{"label":"Extremely","scoringValue":4}] },
+    { "id": "pcl5-15", "text": "Irritable behavior, angry outbursts, or acting aggressively?", "responses": [{"label":"Not at all","scoringValue":0},{"label":"A little bit","scoringValue":1},{"label":"Moderately","scoringValue":2},{"label":"Quite a bit","scoringValue":3},{"label":"Extremely","scoringValue":4}] },
+    { "id": "pcl5-16", "text": "Taking too many risks or doing things that could cause you harm?", "responses": [{"label":"Not at all","scoringValue":0},{"label":"A little bit","scoringValue":1},{"label":"Moderately","scoringValue":2},{"label":"Quite a bit","scoringValue":3},{"label":"Extremely","scoringValue":4}] },
+    { "id": "pcl5-17", "text": "Being \"superalert\" or watchful or on guard?", "responses": [{"label":"Not at all","scoringValue":0},{"label":"A little bit","scoringValue":1},{"label":"Moderately","scoringValue":2},{"label":"Quite a bit","scoringValue":3},{"label":"Extremely","scoringValue":4}] },
+    { "id": "pcl5-18", "text": "Feeling jumpy or easily startled?", "responses": [{"label":"Not at all","scoringValue":0},{"label":"A little bit","scoringValue":1},{"label":"Moderately","scoringValue":2},{"label":"Quite a bit","scoringValue":3},{"label":"Extremely","scoringValue":4}] },
+    { "id": "pcl5-19", "text": "Having difficulty concentrating?", "responses": [{"label":"Not at all","scoringValue":0},{"label":"A little bit","scoringValue":1},{"label":"Moderately","scoringValue":2},{"label":"Quite a bit","scoringValue":3},{"label":"Extremely","scoringValue":4}] },
+    { "id": "pcl5-20", "text": "Trouble falling or staying asleep?", "responses": [{"label":"Not at all","scoringValue":0},{"label":"A little bit","scoringValue":1},{"label":"Moderately","scoringValue":2},{"label":"Quite a bit","scoringValue":3},{"label":"Extremely","scoringValue":4}] }
+  ],
+  "scoring": {
+    "method": "sum",
+    "cutoff": 33,
+    "subscales": {
+      "intrusion": ["pcl5-1","pcl5-2","pcl5-3","pcl5-4","pcl5-5"],
+      "avoidance": ["pcl5-6","pcl5-7"],
+      "negative_alterations": ["pcl5-8","pcl5-9","pcl5-10","pcl5-11","pcl5-12","pcl5-13","pcl5-14"],
+      "arousal_reactivity": ["pcl5-15","pcl5-16","pcl5-17","pcl5-18","pcl5-19","pcl5-20"]
+    },
+    "scoreRange": { "min": 0, "max": 80 },
+    "cutoffMeaning": "A total score of 33 or above is indicative of probable PTSD and warrants further assessment by a qualified clinician. The PCL-5 is not a diagnostic instrument; the Clinician-Administered PTSD Scale (CAPS-5) is the gold standard for formal diagnosis."
+  },
+  "fullName": "PTSD Checklist for DSM-5"
+}

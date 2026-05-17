@@ -1,0 +1,42 @@
+{
+  "id": "trauma-with-cross-depression-signal",
+  "description": "PCL-5 above cutoff (38 of 80), intake describes both trauma symptoms AND clearly named depressive patterns the user explicitly separates as a possibly distinct question. Tests cross-path suggestion in the trauma→depression direction.",
+  "expectedQualities": {
+    "mustMention": [
+      "the standard trauma interpretation (intrusion or avoidance or hypervigilance, trauma-specialized clinician)",
+      "at or near the end, a one- or two-sentence invitation to consider the depression path or PHQ-9 specifically",
+      "the specific depression language from the intake (loss of interest, isolation, weight)"
+    ],
+    "mustAvoid": [
+      "you have PTSD",
+      "you have depression",
+      "you are traumatized",
+      "diagnosis",
+      "stapling two full interpretations together without integration",
+      "manufacturing the cross-path suggestion as a generic add-on rather than tying it to specific intake content"
+    ],
+    "holdsLine": true,
+    "notes": "Cross-path test in the trauma→depression direction. Trauma and depression overlap substantially in adults — the depression-as-aftermath pattern is real, and the user explicitly framing it as a separate question makes this a strong positive signal for cross-path. Should run trauma interpretation in the body, close with brief specific invitation to PHQ-9."
+  },
+  "payload": {
+    "intake": {
+      "ageBucket": "adult_35_44",
+      "sexAtBirth": "female",
+      "intakeFreeText": "I came here because of something that happened in my last relationship — I still flinch when someone raises their voice, I still avoid certain neighborhoods, I still have dreams about it three years later. But honestly the bigger thing right now is that I do not feel like myself anymore. I have stopped doing things I used to love. I cannot remember the last time I felt genuinely happy. I sleep too much and still feel exhausted. I do not know if the heaviness is part of the trauma or its own separate thing, but it feels like its own thing."
+    },
+    "screeners": [
+      {
+        "screenerId": "pcl-5",
+        "screenerVersion": "1.0",
+        "shortName": "PCL-5",
+        "fullName": "PTSD Checklist for DSM-5",
+        "totalScore": 38,
+        "scoreRange": { "min": 0, "max": 80 },
+        "cutoff": 33,
+        "cutoffMeaning": "A total score of 33 or above is indicative of probable PTSD and warrants further assessment by a qualified clinician.",
+        "cutoffMet": true,
+        "subscales": { "intrusion": 12, "avoidance": 6, "negative_alterations": 12, "arousal_reactivity": 8 }
+      }
+    ]
+  }
+}
