@@ -18,6 +18,7 @@ import {
   fetchInterpretation,
 } from '../../lib/api/client';
 import { tap } from '../../lib/haptics';
+import { debugLog } from '../../lib/debug';
 import { getAllPaths, pathForScreener, type PathId, type Path } from '../../lib/paths';
 import { getResourcesForPath, type PathResources } from '../../lib/resources';
 import { colors } from '../../design/colors';
@@ -144,11 +145,11 @@ export default function InterpretationScreen() {
       setInterpretation(cacheKey, response.interpretation);
       tap.arrival();
     } catch (err) {
-      console.log('[INKLING DEBUG] Fetch threw:', err);
+      debugLog('Fetch threw:', err);
       if (err instanceof Error) {
-        console.log('[INKLING DEBUG] Error name:', err.name);
-        console.log('[INKLING DEBUG] Error message:', err.message);
-        console.log('[INKLING DEBUG] Error stack:', err.stack);
+        debugLog('Error name:', err.name);
+        debugLog('Error message:', err.message);
+        debugLog('Error stack:', err.stack);
       }
       setError(err instanceof Error ? err.message : 'Unknown error');
     } finally {

@@ -1,6 +1,7 @@
 import type { Screener } from '../scoring/types';
 import type { CompletedScreener } from '../storage/store';
 import { getScreener } from '../scoring/loader';
+import { debugLog } from '../debug';
 
 const API_URL = process.env.EXPO_PUBLIC_API_URL;
 const API_SECRET = process.env.EXPO_PUBLIC_API_SECRET;
@@ -101,7 +102,7 @@ export async function fetchInterpretation(
   payload: InterpretRequest
 ): Promise<InterpretResponse> {
   if (!API_URL || !API_SECRET) {
-    console.log('[INKLING DEBUG] API not configured', {
+    debugLog('API not configured', {
       hasUrl: !!API_URL,
       hasSecret: !!API_SECRET,
     });
@@ -110,7 +111,7 @@ export async function fetchInterpretation(
     );
   }
 
-  console.log('[INKLING DEBUG] fetchInterpretation start', {
+  debugLog('fetchInterpretation start', {
     url: `${API_URL}/interpret`,
     secretPrefix: API_SECRET.slice(0, 8),
     screenerCount: payload.screeners.length,
@@ -128,22 +129,22 @@ export async function fetchInterpretation(
       body: JSON.stringify(payload),
     });
   } catch (err) {
-    console.log('[INKLING DEBUG] Fetch network error:', err);
+    debugLog('Fetch network error:', err);
     throw err;
   }
 
-  console.log('[INKLING DEBUG] Response status:', response.status);
+  debugLog('Response status:', response.status);
 
   if (!response.ok) {
     let errBody = '';
     try {
       errBody = await response.text();
     } catch {}
-    console.log('[INKLING DEBUG] Error body:', errBody);
+    debugLog('Error body:', errBody);
     throw new Error(`Interpretation API ${response.status}: ${errBody}`);
   }
 
   const data = await response.json();
-  console.log('[INKLING DEBUG] Response received, keys:', Object.keys(data));
+  debugLog('Response received, keys:', Object.keys(data));
   return data;
 }
