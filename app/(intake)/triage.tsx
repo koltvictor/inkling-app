@@ -24,7 +24,8 @@ const MAX_LENGTH = 2000;
 const MIN_LENGTH = 10;
 
 export default function TriageScreen() {
-  const [text, setText] = useState('');
+  const storedText = useAppStore((s) => s.intakeFreeText);
+  const [text, setText] = useState(storedText ?? '');
   const [pathId, setPathId] = useState<PathId | null>(null);
 
   const setIntakeFreeText = useAppStore((s) => s.setIntakeFreeText);
@@ -47,7 +48,7 @@ export default function TriageScreen() {
 
     const filterResult = prefilter(text);
     if (filterResult.triggered) {
-      router.replace('/resources');
+      router.push('/resources');
       return;
     }
 
@@ -67,6 +68,14 @@ export default function TriageScreen() {
     } else {
       router.replace('/interpretation');
     }
+  };
+
+  const handleNotSure = () => {
+    tap.selection();
+    if (text.trim().length > 0) {
+      setIntakeFreeText(text.trim());
+    }
+    router.push('/routing');
   };
 
   return (
@@ -148,6 +157,13 @@ export default function TriageScreen() {
               );
             })}
           </View>
+
+          <Pressable
+            onPress={handleNotSure}
+            style={({ pressed }) => [styles.notSureButton, pressed && styles.notSureButtonPressed]}
+          >
+            <Text style={styles.notSureLabel}>Not sure where to start? Let me suggest a path →</Text>
+          </Pressable>
         </ScrollView>
 
         <View style={styles.footer}>
@@ -253,4 +269,15 @@ const styles = StyleSheet.create({
   continueButtonPressed: { opacity: 0.85 },
   continueLabel: { ...typography.body, color: colors.light.paper, fontWeight: '500' },
   continueLabelDisabled: { color: colors.light.inkSoft },
+  notSureButton: {
+    paddingVertical: spacing.m,
+    alignItems: 'center',
+    marginTop: spacing.s,
+  },
+  notSureButtonPressed: { opacity: 0.6 },
+  notSureLabel: {
+    ...typography.body,
+    color: colors.light.accent,
+    fontWeight: '500',
+  },
 });

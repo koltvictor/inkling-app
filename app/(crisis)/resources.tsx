@@ -1,7 +1,7 @@
 import { ScrollView, View, StyleSheet, Text, Pressable, Linking } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import * as Haptics from 'expo-haptics';
 import { router } from 'expo-router';
+import { tap } from '../../lib/haptics';
 import { colors } from '../../design/colors';
 import { typography } from '../../design/typography';
 import { spacing } from '../../design/spacing';
@@ -42,17 +42,21 @@ const RESOURCES: Resource[] = [
 
 export default function CrisisResources() {
   const handleResource = (url: string) => {
-    Haptics.selectionAsync();
+    tap.selection();
     Linking.openURL(url);
   };
 
   const handleContinue = () => {
-    Haptics.selectionAsync();
-    router.replace('/demographics');
+    tap.selection();
+    if (router.canGoBack()) {
+      router.back();
+    } else {
+      router.replace('/');
+    }
   };
 
   const handleHome = () => {
-    Haptics.selectionAsync();
+    tap.selection();
     router.replace('/');
   };
 

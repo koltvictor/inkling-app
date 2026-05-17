@@ -31,7 +31,7 @@ export default function CrisisPreScreen() {
     if (!allAnswered) return;
     Haptics.selectionAsync();
     if (anyYes) {
-      router.replace('/resources');
+      router.push('/resources');
     } else {
       router.replace('/demographics');
     }
