@@ -21,6 +21,7 @@ import { tap } from '../../lib/haptics';
 import { debugLog } from '../../lib/debug';
 import { getAllPaths, pathForScreener, type PathId, type Path } from '../../lib/paths';
 import { getResourcesForPath, type PathResources } from '../../lib/resources';
+import { getScreenerDescription } from '../../lib/screeners/descriptions';
 import { colors } from '../../design/colors';
 import { typography } from '../../design/typography';
 import { spacing } from '../../design/spacing';
@@ -170,20 +171,23 @@ export default function InterpretationScreen() {
     }
   }, [cached, loading, error, displayedScreeners.length, fetchAndCache]);
 
-  const nextScreenerId = activePath?.screenerIds.find((id) => {
+  const uncompletedInPathOrder = (activePath?.screenerIds ?? []).filter((id) => {
     const isCompleted = completedScreeners.some((s) => s.screenerId === id);
     const isLoaded = getScreener(id) !== undefined;
     return !isCompleted && isLoaded;
   });
-  const nextScreener = nextScreenerId ? getScreener(nextScreenerId) : undefined;
+  const primaryNextId = uncompletedInPathOrder[0];
+  const secondaryNextId = uncompletedInPathOrder[1];
+  const primaryNext = primaryNextId ? getScreener(primaryNextId) : undefined;
+  const secondaryNext = secondaryNextId ? getScreener(secondaryNextId) : undefined;
 
   const handleHome = () => {
     tap.selection();
     router.replace('/');
   };
-  const handleNext = () => {
+  const handleBegin = (screenerId: string) => {
     tap.selection();
-    if (nextScreenerId) router.push(`/${nextScreenerId}` as any);
+    router.push(`/${screenerId}` as any);
   };
 
   return (
@@ -277,26 +281,41 @@ export default function InterpretationScreen() {
 
         {cached && pathResources && <ResourcesSection resources={pathResources} />}
 
-        {nextScreener && (
+        {primaryNext && (
           <View style={styles.continueSection}>
             <Text style={styles.continueLabel}>Continue if you would like</Text>
             <Text style={styles.continueBody}>
-              Inkling can administer the {nextScreener.fullName ?? nextScreener.shortName} ({nextScreener.shortName}) for a fuller picture. {nextScreener.items.length} items, about {nextScreener.estimatedMinutes} minutes.
+              The {primaryNext.fullName ?? primaryNext.shortName} adds {getScreenerDescription(primaryNext.id)?.valueAdd}. About {primaryNext.estimatedMinutes} minutes.
             </Text>
             <Pressable
-              onPress={handleNext}
+              onPress={() => handleBegin(primaryNext.id)}
               style={({ pressed }) => [styles.cta, pressed && styles.pressed]}
               hitSlop={12}
             >
-              <Text style={styles.ctaText}>Begin {nextScreener.shortName} {'\u2192'}</Text>
+              <Text style={styles.ctaText}>Begin {primaryNext.shortName} {'\u2192'}</Text>
             </Pressable>
+
+            {secondaryNext && (
+              <View style={styles.alternativeBlock}>
+                <Text style={styles.continueBody}>
+                  Or skip ahead to the {secondaryNext.shortName}. It focuses on {getScreenerDescription(secondaryNext.id)?.valueAdd}. About {secondaryNext.estimatedMinutes} minutes.
+                </Text>
+                <Pressable
+                  onPress={() => handleBegin(secondaryNext.id)}
+                  style={({ pressed }) => [styles.cta, pressed && styles.pressed]}
+                  hitSlop={12}
+                >
+                  <Text style={styles.ctaText}>Begin {secondaryNext.shortName} {'\u2192'}</Text>
+                </Pressable>
+              </View>
+            )}
           </View>
         )}
 
         <View style={styles.footer}>
           <Pressable onPress={handleHome} hitSlop={12}>
             <Text style={styles.secondaryLink}>
-              {nextScreener ? 'Stop here and go home' : 'Done — go home'}
+              {primaryNext ? 'Stop here and go home' : 'Done — go home'}
             </Text>
           </Pressable>
         </View>
@@ -482,6 +501,9 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
   },
   pressed: { opacity: 0.4 },
+  alternativeBlock: {
+    marginTop: spacing.xxxl,
+  },
   footer: {
     paddingTop: spacing.xxl,
     borderTopWidth: 1,
