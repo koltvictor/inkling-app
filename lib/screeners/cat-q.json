@@ -1,0 +1,907 @@
+{
+  "id": "cat-q",
+  "name": "Camouflaging Autistic Traits Questionnaire",
+  "shortName": "CAT-Q",
+  "fullName": "Camouflaging Autistic Traits Questionnaire",
+  "version": "1.0",
+  "estimatedMinutes": 7,
+  "citation": "Hull, L., Mandy, W., Lai, M.-C., Baron-Cohen, S., Allison, C., Smith, P., & Petrides, K. V. (2019). Development and Validation of the Self-Report Camouflaging Autistic Traits Questionnaire (CAT-Q). Journal of Autism and Developmental Disorders, 49(3), 819-833.",
+  "publicDomain": false,
+  "licensingNote": "Copyrighted to Hull et al. Personal/dev testing only \u2014 MUST NOT ship to TestFlight or production until licensing signed with Laura Hull.",
+  "validityNotes": "CAT-Q measures camouflaging effort across three subscales: Compensation (9 items, learning/practicing social strategies), Masking (8 items, hiding autistic traits / projecting a non-autistic persona), Assimilation (8 items, effort to fit in or avoid interaction). No formal clinical cutoff. Hull et al. 2019 reference ranges: autistic sample mean ~124 (SD ~13), non-autistic sample mean ~91 (SD ~20), substantial overlap. Especially useful for late-identified adults whose camouflaging causes AQ-10 to underestimate the underlying pattern.",
+  "category": "diagnostic-screener",
+  "items": [
+    {
+      "id": "catq-1",
+      "text": "[CAT-Q item 1 \u2014 Compensation \u2014 paste verified text from Hull 2019]",
+      "responses": [
+        {
+          "label": "Strongly disagree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Disagree",
+          "scoringValue": 2
+        },
+        {
+          "label": "Somewhat disagree",
+          "scoringValue": 3
+        },
+        {
+          "label": "Neither agree nor disagree",
+          "scoringValue": 4
+        },
+        {
+          "label": "Somewhat agree",
+          "scoringValue": 5
+        },
+        {
+          "label": "Agree",
+          "scoringValue": 6
+        },
+        {
+          "label": "Strongly agree",
+          "scoringValue": 7
+        }
+      ]
+    },
+    {
+      "id": "catq-2",
+      "text": "[CAT-Q item 2 \u2014 Masking \u2014 paste verified text from Hull 2019]",
+      "responses": [
+        {
+          "label": "Strongly disagree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Disagree",
+          "scoringValue": 2
+        },
+        {
+          "label": "Somewhat disagree",
+          "scoringValue": 3
+        },
+        {
+          "label": "Neither agree nor disagree",
+          "scoringValue": 4
+        },
+        {
+          "label": "Somewhat agree",
+          "scoringValue": 5
+        },
+        {
+          "label": "Agree",
+          "scoringValue": 6
+        },
+        {
+          "label": "Strongly agree",
+          "scoringValue": 7
+        }
+      ]
+    },
+    {
+      "id": "catq-3",
+      "text": "[CAT-Q item 3 \u2014 Assimilation \u2014 REVERSE SCORED \u2014 paste verified text from Hull 2019]",
+      "responses": [
+        {
+          "label": "Strongly disagree",
+          "scoringValue": 7
+        },
+        {
+          "label": "Disagree",
+          "scoringValue": 6
+        },
+        {
+          "label": "Somewhat disagree",
+          "scoringValue": 5
+        },
+        {
+          "label": "Neither agree nor disagree",
+          "scoringValue": 4
+        },
+        {
+          "label": "Somewhat agree",
+          "scoringValue": 3
+        },
+        {
+          "label": "Agree",
+          "scoringValue": 2
+        },
+        {
+          "label": "Strongly agree",
+          "scoringValue": 1
+        }
+      ]
+    },
+    {
+      "id": "catq-4",
+      "text": "[CAT-Q item 4 \u2014 Compensation \u2014 paste verified text from Hull 2019]",
+      "responses": [
+        {
+          "label": "Strongly disagree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Disagree",
+          "scoringValue": 2
+        },
+        {
+          "label": "Somewhat disagree",
+          "scoringValue": 3
+        },
+        {
+          "label": "Neither agree nor disagree",
+          "scoringValue": 4
+        },
+        {
+          "label": "Somewhat agree",
+          "scoringValue": 5
+        },
+        {
+          "label": "Agree",
+          "scoringValue": 6
+        },
+        {
+          "label": "Strongly agree",
+          "scoringValue": 7
+        }
+      ]
+    },
+    {
+      "id": "catq-5",
+      "text": "[CAT-Q item 5 \u2014 Compensation \u2014 paste verified text from Hull 2019]",
+      "responses": [
+        {
+          "label": "Strongly disagree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Disagree",
+          "scoringValue": 2
+        },
+        {
+          "label": "Somewhat disagree",
+          "scoringValue": 3
+        },
+        {
+          "label": "Neither agree nor disagree",
+          "scoringValue": 4
+        },
+        {
+          "label": "Somewhat agree",
+          "scoringValue": 5
+        },
+        {
+          "label": "Agree",
+          "scoringValue": 6
+        },
+        {
+          "label": "Strongly agree",
+          "scoringValue": 7
+        }
+      ]
+    },
+    {
+      "id": "catq-6",
+      "text": "[CAT-Q item 6 \u2014 Masking \u2014 paste verified text from Hull 2019]",
+      "responses": [
+        {
+          "label": "Strongly disagree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Disagree",
+          "scoringValue": 2
+        },
+        {
+          "label": "Somewhat disagree",
+          "scoringValue": 3
+        },
+        {
+          "label": "Neither agree nor disagree",
+          "scoringValue": 4
+        },
+        {
+          "label": "Somewhat agree",
+          "scoringValue": 5
+        },
+        {
+          "label": "Agree",
+          "scoringValue": 6
+        },
+        {
+          "label": "Strongly agree",
+          "scoringValue": 7
+        }
+      ]
+    },
+    {
+      "id": "catq-7",
+      "text": "[CAT-Q item 7 \u2014 Assimilation \u2014 paste verified text from Hull 2019]",
+      "responses": [
+        {
+          "label": "Strongly disagree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Disagree",
+          "scoringValue": 2
+        },
+        {
+          "label": "Somewhat disagree",
+          "scoringValue": 3
+        },
+        {
+          "label": "Neither agree nor disagree",
+          "scoringValue": 4
+        },
+        {
+          "label": "Somewhat agree",
+          "scoringValue": 5
+        },
+        {
+          "label": "Agree",
+          "scoringValue": 6
+        },
+        {
+          "label": "Strongly agree",
+          "scoringValue": 7
+        }
+      ]
+    },
+    {
+      "id": "catq-8",
+      "text": "[CAT-Q item 8 \u2014 Compensation \u2014 paste verified text from Hull 2019]",
+      "responses": [
+        {
+          "label": "Strongly disagree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Disagree",
+          "scoringValue": 2
+        },
+        {
+          "label": "Somewhat disagree",
+          "scoringValue": 3
+        },
+        {
+          "label": "Neither agree nor disagree",
+          "scoringValue": 4
+        },
+        {
+          "label": "Somewhat agree",
+          "scoringValue": 5
+        },
+        {
+          "label": "Agree",
+          "scoringValue": 6
+        },
+        {
+          "label": "Strongly agree",
+          "scoringValue": 7
+        }
+      ]
+    },
+    {
+      "id": "catq-9",
+      "text": "[CAT-Q item 9 \u2014 Masking \u2014 paste verified text from Hull 2019]",
+      "responses": [
+        {
+          "label": "Strongly disagree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Disagree",
+          "scoringValue": 2
+        },
+        {
+          "label": "Somewhat disagree",
+          "scoringValue": 3
+        },
+        {
+          "label": "Neither agree nor disagree",
+          "scoringValue": 4
+        },
+        {
+          "label": "Somewhat agree",
+          "scoringValue": 5
+        },
+        {
+          "label": "Agree",
+          "scoringValue": 6
+        },
+        {
+          "label": "Strongly agree",
+          "scoringValue": 7
+        }
+      ]
+    },
+    {
+      "id": "catq-10",
+      "text": "[CAT-Q item 10 \u2014 Assimilation \u2014 paste verified text from Hull 2019]",
+      "responses": [
+        {
+          "label": "Strongly disagree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Disagree",
+          "scoringValue": 2
+        },
+        {
+          "label": "Somewhat disagree",
+          "scoringValue": 3
+        },
+        {
+          "label": "Neither agree nor disagree",
+          "scoringValue": 4
+        },
+        {
+          "label": "Somewhat agree",
+          "scoringValue": 5
+        },
+        {
+          "label": "Agree",
+          "scoringValue": 6
+        },
+        {
+          "label": "Strongly agree",
+          "scoringValue": 7
+        }
+      ]
+    },
+    {
+      "id": "catq-11",
+      "text": "[CAT-Q item 11 \u2014 Compensation \u2014 paste verified text from Hull 2019]",
+      "responses": [
+        {
+          "label": "Strongly disagree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Disagree",
+          "scoringValue": 2
+        },
+        {
+          "label": "Somewhat disagree",
+          "scoringValue": 3
+        },
+        {
+          "label": "Neither agree nor disagree",
+          "scoringValue": 4
+        },
+        {
+          "label": "Somewhat agree",
+          "scoringValue": 5
+        },
+        {
+          "label": "Agree",
+          "scoringValue": 6
+        },
+        {
+          "label": "Strongly agree",
+          "scoringValue": 7
+        }
+      ]
+    },
+    {
+      "id": "catq-12",
+      "text": "[CAT-Q item 12 \u2014 Masking \u2014 REVERSE SCORED \u2014 paste verified text from Hull 2019]",
+      "responses": [
+        {
+          "label": "Strongly disagree",
+          "scoringValue": 7
+        },
+        {
+          "label": "Disagree",
+          "scoringValue": 6
+        },
+        {
+          "label": "Somewhat disagree",
+          "scoringValue": 5
+        },
+        {
+          "label": "Neither agree nor disagree",
+          "scoringValue": 4
+        },
+        {
+          "label": "Somewhat agree",
+          "scoringValue": 3
+        },
+        {
+          "label": "Agree",
+          "scoringValue": 2
+        },
+        {
+          "label": "Strongly agree",
+          "scoringValue": 1
+        }
+      ]
+    },
+    {
+      "id": "catq-13",
+      "text": "[CAT-Q item 13 \u2014 Assimilation \u2014 paste verified text from Hull 2019]",
+      "responses": [
+        {
+          "label": "Strongly disagree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Disagree",
+          "scoringValue": 2
+        },
+        {
+          "label": "Somewhat disagree",
+          "scoringValue": 3
+        },
+        {
+          "label": "Neither agree nor disagree",
+          "scoringValue": 4
+        },
+        {
+          "label": "Somewhat agree",
+          "scoringValue": 5
+        },
+        {
+          "label": "Agree",
+          "scoringValue": 6
+        },
+        {
+          "label": "Strongly agree",
+          "scoringValue": 7
+        }
+      ]
+    },
+    {
+      "id": "catq-14",
+      "text": "[CAT-Q item 14 \u2014 Compensation \u2014 paste verified text from Hull 2019]",
+      "responses": [
+        {
+          "label": "Strongly disagree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Disagree",
+          "scoringValue": 2
+        },
+        {
+          "label": "Somewhat disagree",
+          "scoringValue": 3
+        },
+        {
+          "label": "Neither agree nor disagree",
+          "scoringValue": 4
+        },
+        {
+          "label": "Somewhat agree",
+          "scoringValue": 5
+        },
+        {
+          "label": "Agree",
+          "scoringValue": 6
+        },
+        {
+          "label": "Strongly agree",
+          "scoringValue": 7
+        }
+      ]
+    },
+    {
+      "id": "catq-15",
+      "text": "[CAT-Q item 15 \u2014 Masking \u2014 paste verified text from Hull 2019]",
+      "responses": [
+        {
+          "label": "Strongly disagree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Disagree",
+          "scoringValue": 2
+        },
+        {
+          "label": "Somewhat disagree",
+          "scoringValue": 3
+        },
+        {
+          "label": "Neither agree nor disagree",
+          "scoringValue": 4
+        },
+        {
+          "label": "Somewhat agree",
+          "scoringValue": 5
+        },
+        {
+          "label": "Agree",
+          "scoringValue": 6
+        },
+        {
+          "label": "Strongly agree",
+          "scoringValue": 7
+        }
+      ]
+    },
+    {
+      "id": "catq-16",
+      "text": "[CAT-Q item 16 \u2014 Assimilation \u2014 paste verified text from Hull 2019]",
+      "responses": [
+        {
+          "label": "Strongly disagree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Disagree",
+          "scoringValue": 2
+        },
+        {
+          "label": "Somewhat disagree",
+          "scoringValue": 3
+        },
+        {
+          "label": "Neither agree nor disagree",
+          "scoringValue": 4
+        },
+        {
+          "label": "Somewhat agree",
+          "scoringValue": 5
+        },
+        {
+          "label": "Agree",
+          "scoringValue": 6
+        },
+        {
+          "label": "Strongly agree",
+          "scoringValue": 7
+        }
+      ]
+    },
+    {
+      "id": "catq-17",
+      "text": "[CAT-Q item 17 \u2014 Compensation \u2014 paste verified text from Hull 2019]",
+      "responses": [
+        {
+          "label": "Strongly disagree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Disagree",
+          "scoringValue": 2
+        },
+        {
+          "label": "Somewhat disagree",
+          "scoringValue": 3
+        },
+        {
+          "label": "Neither agree nor disagree",
+          "scoringValue": 4
+        },
+        {
+          "label": "Somewhat agree",
+          "scoringValue": 5
+        },
+        {
+          "label": "Agree",
+          "scoringValue": 6
+        },
+        {
+          "label": "Strongly agree",
+          "scoringValue": 7
+        }
+      ]
+    },
+    {
+      "id": "catq-18",
+      "text": "[CAT-Q item 18 \u2014 Masking \u2014 paste verified text from Hull 2019]",
+      "responses": [
+        {
+          "label": "Strongly disagree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Disagree",
+          "scoringValue": 2
+        },
+        {
+          "label": "Somewhat disagree",
+          "scoringValue": 3
+        },
+        {
+          "label": "Neither agree nor disagree",
+          "scoringValue": 4
+        },
+        {
+          "label": "Somewhat agree",
+          "scoringValue": 5
+        },
+        {
+          "label": "Agree",
+          "scoringValue": 6
+        },
+        {
+          "label": "Strongly agree",
+          "scoringValue": 7
+        }
+      ]
+    },
+    {
+      "id": "catq-19",
+      "text": "[CAT-Q item 19 \u2014 Assimilation \u2014 REVERSE SCORED \u2014 paste verified text from Hull 2019]",
+      "responses": [
+        {
+          "label": "Strongly disagree",
+          "scoringValue": 7
+        },
+        {
+          "label": "Disagree",
+          "scoringValue": 6
+        },
+        {
+          "label": "Somewhat disagree",
+          "scoringValue": 5
+        },
+        {
+          "label": "Neither agree nor disagree",
+          "scoringValue": 4
+        },
+        {
+          "label": "Somewhat agree",
+          "scoringValue": 3
+        },
+        {
+          "label": "Agree",
+          "scoringValue": 2
+        },
+        {
+          "label": "Strongly agree",
+          "scoringValue": 1
+        }
+      ]
+    },
+    {
+      "id": "catq-20",
+      "text": "[CAT-Q item 20 \u2014 Compensation \u2014 paste verified text from Hull 2019]",
+      "responses": [
+        {
+          "label": "Strongly disagree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Disagree",
+          "scoringValue": 2
+        },
+        {
+          "label": "Somewhat disagree",
+          "scoringValue": 3
+        },
+        {
+          "label": "Neither agree nor disagree",
+          "scoringValue": 4
+        },
+        {
+          "label": "Somewhat agree",
+          "scoringValue": 5
+        },
+        {
+          "label": "Agree",
+          "scoringValue": 6
+        },
+        {
+          "label": "Strongly agree",
+          "scoringValue": 7
+        }
+      ]
+    },
+    {
+      "id": "catq-21",
+      "text": "[CAT-Q item 21 \u2014 Masking \u2014 paste verified text from Hull 2019]",
+      "responses": [
+        {
+          "label": "Strongly disagree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Disagree",
+          "scoringValue": 2
+        },
+        {
+          "label": "Somewhat disagree",
+          "scoringValue": 3
+        },
+        {
+          "label": "Neither agree nor disagree",
+          "scoringValue": 4
+        },
+        {
+          "label": "Somewhat agree",
+          "scoringValue": 5
+        },
+        {
+          "label": "Agree",
+          "scoringValue": 6
+        },
+        {
+          "label": "Strongly agree",
+          "scoringValue": 7
+        }
+      ]
+    },
+    {
+      "id": "catq-22",
+      "text": "[CAT-Q item 22 \u2014 Assimilation \u2014 REVERSE SCORED \u2014 paste verified text from Hull 2019]",
+      "responses": [
+        {
+          "label": "Strongly disagree",
+          "scoringValue": 7
+        },
+        {
+          "label": "Disagree",
+          "scoringValue": 6
+        },
+        {
+          "label": "Somewhat disagree",
+          "scoringValue": 5
+        },
+        {
+          "label": "Neither agree nor disagree",
+          "scoringValue": 4
+        },
+        {
+          "label": "Somewhat agree",
+          "scoringValue": 3
+        },
+        {
+          "label": "Agree",
+          "scoringValue": 2
+        },
+        {
+          "label": "Strongly agree",
+          "scoringValue": 1
+        }
+      ]
+    },
+    {
+      "id": "catq-23",
+      "text": "[CAT-Q item 23 \u2014 Compensation \u2014 paste verified text from Hull 2019]",
+      "responses": [
+        {
+          "label": "Strongly disagree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Disagree",
+          "scoringValue": 2
+        },
+        {
+          "label": "Somewhat disagree",
+          "scoringValue": 3
+        },
+        {
+          "label": "Neither agree nor disagree",
+          "scoringValue": 4
+        },
+        {
+          "label": "Somewhat agree",
+          "scoringValue": 5
+        },
+        {
+          "label": "Agree",
+          "scoringValue": 6
+        },
+        {
+          "label": "Strongly agree",
+          "scoringValue": 7
+        }
+      ]
+    },
+    {
+      "id": "catq-24",
+      "text": "[CAT-Q item 24 \u2014 Masking \u2014 REVERSE SCORED \u2014 paste verified text from Hull 2019]",
+      "responses": [
+        {
+          "label": "Strongly disagree",
+          "scoringValue": 7
+        },
+        {
+          "label": "Disagree",
+          "scoringValue": 6
+        },
+        {
+          "label": "Somewhat disagree",
+          "scoringValue": 5
+        },
+        {
+          "label": "Neither agree nor disagree",
+          "scoringValue": 4
+        },
+        {
+          "label": "Somewhat agree",
+          "scoringValue": 3
+        },
+        {
+          "label": "Agree",
+          "scoringValue": 2
+        },
+        {
+          "label": "Strongly agree",
+          "scoringValue": 1
+        }
+      ]
+    },
+    {
+      "id": "catq-25",
+      "text": "[CAT-Q item 25 \u2014 Assimilation \u2014 paste verified text from Hull 2019]",
+      "responses": [
+        {
+          "label": "Strongly disagree",
+          "scoringValue": 1
+        },
+        {
+          "label": "Disagree",
+          "scoringValue": 2
+        },
+        {
+          "label": "Somewhat disagree",
+          "scoringValue": 3
+        },
+        {
+          "label": "Neither agree nor disagree",
+          "scoringValue": 4
+        },
+        {
+          "label": "Somewhat agree",
+          "scoringValue": 5
+        },
+        {
+          "label": "Agree",
+          "scoringValue": 6
+        },
+        {
+          "label": "Strongly agree",
+          "scoringValue": 7
+        }
+      ]
+    }
+  ],
+  "scoring": {
+    "method": "sum",
+    "cutoff": null,
+    "subscales": {
+      "compensation": [
+        "catq-1",
+        "catq-4",
+        "catq-5",
+        "catq-8",
+        "catq-11",
+        "catq-14",
+        "catq-17",
+        "catq-20",
+        "catq-23"
+      ],
+      "masking": [
+        "catq-2",
+        "catq-6",
+        "catq-9",
+        "catq-12",
+        "catq-15",
+        "catq-18",
+        "catq-21",
+        "catq-24"
+      ],
+      "assimilation": [
+        "catq-3",
+        "catq-7",
+        "catq-10",
+        "catq-13",
+        "catq-16",
+        "catq-19",
+        "catq-22",
+        "catq-25"
+      ]
+    },
+    "scoreRange": {
+      "min": 25,
+      "max": 175
+    },
+    "cutoffMeaning": "No formal clinical cutoff. Subscale shape interpreted in context. Reference ranges (Hull 2019): autistic mean ~124, non-autistic mean ~91. Higher = more camouflaging."
+  }
+}
