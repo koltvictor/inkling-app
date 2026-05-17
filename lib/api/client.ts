@@ -148,3 +148,69 @@ export async function fetchInterpretation(
   debugLog('Response received, keys:', Object.keys(data));
   return data;
 }
+
+
+export type Recommendation = {
+  pathId: string;
+  rationale: string;
+};
+
+export type OutOfScope = {
+  category: string;
+  rationale: string;
+};
+
+export type ClassifyResponse = {
+  recommendations: Recommendation[];
+  crisis: boolean;
+  outOfScope: OutOfScope | null;
+  parseError?: boolean;
+};
+
+export async function classify(intakeText: string): Promise<ClassifyResponse> {
+  if (!API_URL || !API_SECRET) {
+    debugLog('API not configured for classify', {
+      hasUrl: !!API_URL,
+      hasSecret: !!API_SECRET,
+    });
+    throw new Error(
+      'API not configured. Check .env contains EXPO_PUBLIC_API_URL and EXPO_PUBLIC_API_SECRET.'
+    );
+  }
+
+  debugLog('classify start', {
+    url: `${API_URL}/classify`,
+    secretPrefix: API_SECRET.slice(0, 8),
+    textLength: intakeText.length,
+  });
+
+  let response: Response;
+  try {
+    response = await fetch(`${API_URL}/classify`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${API_SECRET}`,
+      },
+      body: JSON.stringify({ intakeText }),
+    });
+  } catch (err) {
+    debugLog('classify network error:', err);
+    throw err;
+  }
+
+  debugLog('classify response status:', response.status);
+
+  if (!response.ok) {
+    let errBody = '';
+    try {
+      errBody = await response.text();
+    } catch {}
+    debugLog('classify error body:', errBody);
+    throw new Error(`Classify API ${response.status}: ${errBody}`);
+  }
+
+  const data = await response.json();
+  debugLog('classify response received, keys:', Object.keys(data));
+  return data;
+}

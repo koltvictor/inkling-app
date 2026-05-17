@@ -59,7 +59,18 @@ export default function RoutingScreen() {
     try {
       const response = await classify(text.trim());
       if (response.crisis) {
+        setMode('input');
         router.push('/resources');
+        return;
+      }
+      if (response.outOfScope) {
+        setMode('input');
+        router.push({
+          pathname: '/different-care',
+          params: {
+            categoryId: response.outOfScope.category,
+          },
+        });
         return;
       }
       if (response.recommendations.length === 0) {
