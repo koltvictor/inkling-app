@@ -1,0 +1,93 @@
+{
+  "id": "asrs-v1-1-part-a",
+  "name": "Adult ADHD Self-Report Scale (Part A)",
+  "shortName": "ASRS-v1.1 Part A",
+  "version": "1.0",
+  "estimatedMinutes": 3,
+  "citation": "Kessler, R. C., Adler, L., Ames, M., Demler, O., Faraone, S., Hiripi, E., Howes, M. J., Jin, R., Secnik, K., Spencer, T., Ustun, T. B., & Walters, E. E. (2005). The World Health Organization Adult ADHD Self-Report Scale (ASRS): a short screening scale for use in the general population. Psychological Medicine, 35(2), 245-256.",
+  "publicDomain": false,
+  "copyright": "© World Health Organization 2003; © New York University and Ronald C. Kessler, PhD. All rights reserved.",
+  "license": "Permission requests to ronkadm@hcp.med.harvard.edu",
+  "validityNotes": "ASRS-v1.1 Part A is the 6-item screener subset of the 18-item ASRS-v1.1 Symptom Checklist, developed jointly by the WHO Workgroup on Adult ADHD. Cutoff of 4+ shaded responses (out of 6) indicates symptoms may be consistent with adult ADHD and warrants further evaluation. Original validation showed moderate sensitivity (68.7%) and high specificity in general population samples (Kessler et al. 2005). Positive predictive value is relatively low (12-22%) in primary care, meaning a positive screen warrants follow-up rather than confirms diagnosis. Performance varies in populations with comorbid anxiety, depression, or substance use, where symptom overlap can inflate positives.",
+  "category": "diagnostic-screener",
+  "instructions": "Check the box that best describes how you have felt and conducted yourself over the past 6 months.",
+  "items": [
+    {
+      "id": "asrs-1",
+      "text": "How often do you have trouble wrapping up the final details of a project, once the challenging parts have been done?",
+      "responses": [
+        { "label": "Never", "scoringValue": 0 },
+        { "label": "Rarely", "scoringValue": 0 },
+        { "label": "Sometimes", "scoringValue": 1 },
+        { "label": "Often", "scoringValue": 1 },
+        { "label": "Very Often", "scoringValue": 1 }
+      ]
+    },
+    {
+      "id": "asrs-2",
+      "text": "How often do you have difficulty getting things in order when you have to do a task that requires organization?",
+      "responses": [
+        { "label": "Never", "scoringValue": 0 },
+        { "label": "Rarely", "scoringValue": 0 },
+        { "label": "Sometimes", "scoringValue": 1 },
+        { "label": "Often", "scoringValue": 1 },
+        { "label": "Very Often", "scoringValue": 1 }
+      ]
+    },
+    {
+      "id": "asrs-3",
+      "text": "How often do you have problems remembering appointments or obligations?",
+      "responses": [
+        { "label": "Never", "scoringValue": 0 },
+        { "label": "Rarely", "scoringValue": 0 },
+        { "label": "Sometimes", "scoringValue": 1 },
+        { "label": "Often", "scoringValue": 1 },
+        { "label": "Very Often", "scoringValue": 1 }
+      ]
+    },
+    {
+      "id": "asrs-4",
+      "text": "When you have a task that requires a lot of thought, how often do you avoid or delay getting started?",
+      "responses": [
+        { "label": "Never", "scoringValue": 0 },
+        { "label": "Rarely", "scoringValue": 0 },
+        { "label": "Sometimes", "scoringValue": 0 },
+        { "label": "Often", "scoringValue": 1 },
+        { "label": "Very Often", "scoringValue": 1 }
+      ]
+    },
+    {
+      "id": "asrs-5",
+      "text": "How often do you fidget or squirm with your hands or feet when you have to sit down for a long time?",
+      "responses": [
+        { "label": "Never", "scoringValue": 0 },
+        { "label": "Rarely", "scoringValue": 0 },
+        { "label": "Sometimes", "scoringValue": 0 },
+        { "label": "Often", "scoringValue": 1 },
+        { "label": "Very Often", "scoringValue": 1 }
+      ]
+    },
+    {
+      "id": "asrs-6",
+      "text": "How often do you feel overly active and compelled to do things, like you were driven by a motor?",
+      "responses": [
+        { "label": "Never", "scoringValue": 0 },
+        { "label": "Rarely", "scoringValue": 0 },
+        { "label": "Sometimes", "scoringValue": 0 },
+        { "label": "Often", "scoringValue": 1 },
+        { "label": "Very Often", "scoringValue": 1 }
+      ]
+    }
+  ],
+  "scoring": {
+    "method": "sum",
+    "cutoff": 4,
+    "subscales": null,
+    "scoreRange": {
+      "min": 0,
+      "max": 6
+    },
+    "cutoffMeaning": "A score of 4 or above suggests symptoms may be consistent with adult ADHD; the original developers recommend talking with a healthcare provider about an evaluation."
+  },
+  "fullName": "Adult ADHD Self-Report Scale v1.1, Symptom Checklist Part A"
+}

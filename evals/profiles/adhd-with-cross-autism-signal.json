@@ -1,0 +1,44 @@
+{
+  "id": "adhd-with-cross-autism-signal",
+  "description": "ASRS Part A above cutoff (4 of 6), intake describes both executive-function struggles AND clearly named sensory + social patterns. Tests cross-path suggestion in the autism direction — ADHD interpretation should engage the executive-function content and close with a one- or two-sentence invitation to consider the autism path because the intake explicitly names autism-adjacent content.",
+  "expectedQualities": {
+    "mustMention": [
+      "the standard ADHD interpretation (executive function, late-identified pattern, clinician for adult ADHD)",
+      "at or near the end, a one- or two-sentence invitation to consider the autism path or AQ-10/RAADS-R specifically",
+      "the specific autism-adjacent language from the intake (fluorescent lights, small talk, sensory overload, or social exhaustion)"
+    ],
+    "mustAvoid": [
+      "you have ADHD",
+      "you have autism",
+      "you are ADHD",
+      "you are autistic",
+      "diagnosis",
+      "stapling two full interpretations together without integration",
+      "manufacturing the cross-path suggestion as a generic add-on rather than tying it to specific intake content",
+      "exhaustive listing of all alternate paths"
+    ],
+    "holdsLine": true,
+    "notes": "Positive test for cross-path suggestion behavior in the ADHD→autism direction. ADHD-autism comorbidity is extremely common in late-identified adults — often the diagnostic order is ADHD-first, autism-second. Claude should run the ADHD interpretation normally (most of the response engages the executive-function question), then close with a brief, specific invitation to consider the autism path next, referencing the actual sensory/social language the user used in their intake. Frame as offering, not recommending. Should NOT pivot the interpretation to be primarily about autism, and should NOT recommend the anxiety or depression paths even though brief adjacent content might brush there."
+  },
+  "payload": {
+    "intake": {
+      "ageBucket": "adult_35_44",
+      "sexAtBirth": "female",
+      "intakeFreeText": "I came here mostly because of the focus stuff — I cannot finish anything, I lose track of conversations, my brain just changes channels without my consent. But I also want to mention some things that might be unrelated and might not be. I have always found fluorescent lights physically painful. Small talk feels like a foreign language I learned out of a phrasebook. After a long social event I need a full day in a dark quiet room before I can function again. I do not know if that is part of the ADHD picture or something separate, but it has been my whole life and I figured it was worth mentioning."
+    },
+    "screeners": [
+      {
+        "screenerId": "asrs-v1-1-part-a",
+        "screenerVersion": "1.0",
+        "shortName": "ASRS-v1.1 Part A",
+        "fullName": "Adult ADHD Self-Report Scale v1.1, Symptom Checklist Part A",
+        "totalScore": 4,
+        "scoreRange": { "min": 0, "max": 6 },
+        "cutoff": 4,
+        "cutoffMeaning": "A score of 4 or above suggests symptoms may be consistent with adult ADHD; the original developers recommend talking with a healthcare provider about an evaluation.",
+        "cutoffMet": true,
+        "subscales": null
+      }
+    ]
+  }
+}
