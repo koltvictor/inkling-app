@@ -21,7 +21,7 @@
   },
   "payload": {
     "intake": {
-      "ageBucket": "adult_30_39",
+      "ageBucket": "adult_25_34",
       "sexAtBirth": "female",
       "intakeFreeText": "I started a new job three months ago and I feel like I'm always on edge. My partner thinks I have anxiety but I keep telling them it's just the new job and I'll settle in. The thing is, I'm not sure anymore. I want to understand whether what I'm experiencing is anxiety as a trait, or whether I'm just stressed from a hard transition that will pass."
     },
@@ -30,9 +30,12 @@
         "screenerId": "gad-7",
         "screenerVersion": "1.0",
         "shortName": "GAD-7",
-        "fullName": "Generalized Anxiety Disorder 7-item",
+        "fullName": "Generalized Anxiety Disorder 7-item scale",
         "totalScore": 9,
-        "scoreRange": { "min": 0, "max": 21 },
+        "scoreRange": {
+          "min": 0,
+          "max": 21
+        },
         "cutoff": 10,
         "cutoffMeaning": "A score of 10 or above suggests further assessment for generalized anxiety may be appropriate.",
         "cutoffMet": false,

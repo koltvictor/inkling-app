@@ -21,7 +21,7 @@
   },
   "payload": {
     "intake": {
-      "ageBucket": "adult_30_39",
+      "ageBucket": "adult_35_44",
       "sexAtBirth": "female",
       "intakeFreeText": "I worry constantly, and then I get exhausted by the worry and just want to sleep for days. Some days I feel both things at once — wired and flat at the same time. I don't know if I'm anxious, depressed, or both, or whether one is causing the other. I'm hoping this gives me a starting point for a conversation with a therapist."
     },
@@ -32,7 +32,10 @@
         "shortName": "PHQ-9",
         "fullName": "Patient Health Questionnaire-9",
         "totalScore": 12,
-        "scoreRange": { "min": 0, "max": 27 },
+        "scoreRange": {
+          "min": 0,
+          "max": 27
+        },
         "cutoff": 10,
         "cutoffMeaning": "A score of 10 or above suggests further assessment for depression may be appropriate.",
         "cutoffMet": true,
@@ -42,9 +45,12 @@
         "screenerId": "gad-7",
         "screenerVersion": "1.0",
         "shortName": "GAD-7",
-        "fullName": "Generalized Anxiety Disorder 7-item",
+        "fullName": "Generalized Anxiety Disorder 7-item scale",
         "totalScore": 13,
-        "scoreRange": { "min": 0, "max": 21 },
+        "scoreRange": {
+          "min": 0,
+          "max": 21
+        },
         "cutoff": 10,
         "cutoffMeaning": "A score of 10 or above suggests further assessment for generalized anxiety may be appropriate.",
         "cutoffMet": true,

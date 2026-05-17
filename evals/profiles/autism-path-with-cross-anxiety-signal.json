@@ -21,7 +21,7 @@
   },
   "payload": {
     "intake": {
-      "ageBucket": "adult_30_39",
+      "ageBucket": "adult_35_44",
       "sexAtBirth": "female",
       "intakeFreeText": "I keep getting drawn back to descriptions of autism — the masking, the social exhaustion, the sense that other people got a manual I didn't. But underneath all of that, my mind never stops. I rehearse every conversation before it happens. I anticipate disasters that never come. My shoulders are always tight. I don't know whether the constant worry is part of whatever the autism question is, or its own separate thing I should also be looking at."
     },
@@ -32,7 +32,10 @@
         "shortName": "AQ-10",
         "fullName": "Autism Spectrum Quotient — 10 item",
         "totalScore": 7,
-        "scoreRange": { "min": 0, "max": 10 },
+        "scoreRange": {
+          "min": 0,
+          "max": 10
+        },
         "cutoff": 6,
         "cutoffMeaning": "A score of 6 or above suggests that further assessment may be appropriate.",
         "cutoffMet": true,

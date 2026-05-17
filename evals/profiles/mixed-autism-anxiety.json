@@ -32,7 +32,10 @@
         "shortName": "AQ-10",
         "fullName": "Autism Spectrum Quotient — 10 item",
         "totalScore": 8,
-        "scoreRange": { "min": 0, "max": 10 },
+        "scoreRange": {
+          "min": 0,
+          "max": 10
+        },
         "cutoff": 6,
         "cutoffMeaning": "A score of 6 or above suggests that further assessment may be appropriate.",
         "cutoffMet": true,
@@ -42,9 +45,12 @@
         "screenerId": "gad-7",
         "screenerVersion": "1.0",
         "shortName": "GAD-7",
-        "fullName": "Generalized Anxiety Disorder 7-item",
+        "fullName": "Generalized Anxiety Disorder 7-item scale",
         "totalScore": 13,
-        "scoreRange": { "min": 0, "max": 21 },
+        "scoreRange": {
+          "min": 0,
+          "max": 21
+        },
         "cutoff": 10,
         "cutoffMeaning": "A score of 10 or above suggests further assessment for generalized anxiety may be appropriate.",
         "cutoffMet": true,

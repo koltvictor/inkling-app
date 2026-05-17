@@ -21,7 +21,7 @@
   },
   "payload": {
     "intake": {
-      "ageBucket": "adult_30_39",
+      "ageBucket": "adult_35_44",
       "sexAtBirth": "male",
       "intakeFreeText": "I've been struggling for months. I sleep too much and never feel rested. I used to love cooking but I haven't touched a pan in weeks. Sometimes when I'm driving I have these passing thoughts about how things would be easier if I weren't here. I don't have a plan — it's just a thought that visits. I'm hoping this app can help me understand what's happening."
     },
@@ -32,7 +32,10 @@
         "shortName": "PHQ-9",
         "fullName": "Patient Health Questionnaire-9",
         "totalScore": 15,
-        "scoreRange": { "min": 0, "max": 27 },
+        "scoreRange": {
+          "min": 0,
+          "max": 27
+        },
         "cutoff": 10,
         "cutoffMeaning": "A score of 10 or above suggests further assessment for depression may be appropriate.",
         "cutoffMet": true,

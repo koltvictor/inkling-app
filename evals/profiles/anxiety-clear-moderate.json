@@ -21,7 +21,7 @@
   },
   "payload": {
     "intake": {
-      "ageBucket": "adult_25_29",
+      "ageBucket": "adult_25_34",
       "sexAtBirth": "male",
       "intakeFreeText": "My mind doesn't stop. I'm constantly anticipating things going wrong — at work, in relationships, with my health. I check my phone obsessively. I can't fall asleep without rehearsing tomorrow's conversations in my head. My shoulders are always up around my ears. It's been like this for years but it's worse now and starting to affect my work."
     },
@@ -30,9 +30,12 @@
         "screenerId": "gad-7",
         "screenerVersion": "1.0",
         "shortName": "GAD-7",
-        "fullName": "Generalized Anxiety Disorder 7-item",
+        "fullName": "Generalized Anxiety Disorder 7-item scale",
         "totalScore": 14,
-        "scoreRange": { "min": 0, "max": 21 },
+        "scoreRange": {
+          "min": 0,
+          "max": 21
+        },
         "cutoff": 10,
         "cutoffMeaning": "A score of 10 or above suggests further assessment for generalized anxiety may be appropriate.",
         "cutoffMet": true,

@@ -21,7 +21,7 @@
   },
   "payload": {
     "intake": {
-      "ageBucket": "adult_30_39",
+      "ageBucket": "adult_35_44",
       "sexAtBirth": "female",
       "intakeFreeText": "The last six months have been heavy. I'm doing the things I'm supposed to do — going to work, seeing friends sometimes — but everything takes more energy than it should. I'm not enjoying things the way I used to, even the things I'm supposedly good at. I want to understand whether what I'm noticing has a name or whether I'm just being dramatic."
     },
@@ -32,7 +32,10 @@
         "shortName": "PHQ-9",
         "fullName": "Patient Health Questionnaire-9",
         "totalScore": 13,
-        "scoreRange": { "min": 0, "max": 27 },
+        "scoreRange": {
+          "min": 0,
+          "max": 27
+        },
         "cutoff": 10,
         "cutoffMeaning": "A score of 10 or above suggests further assessment for depression may be appropriate.",
         "cutoffMet": true,
