@@ -1,0 +1,43 @@
+{
+  "id": "autism-path-with-cross-anxiety-signal",
+  "description": "AQ-10 above cutoff (7), intake describes both classic autism patterns AND clearly named generalized worry. Tests the cross-path suggestion behavior introduced 2026-05-17. Claude should do the standard autism interpretation, then close with a one- or two-sentence invitation to consider GAD-7 because the anxiety signal in the intake is concrete and named by the user as a separate question.",
+  "expectedQualities": {
+    "mustMention": [
+      "the standard autism interpretation (subscale-style language, late-identified pattern, clinician for adult autism)",
+      "at or near the end, a one- or two-sentence invitation to consider the anxiety path or GAD-7 specifically",
+      "the specific anxiety language from the intake (rehearsing conversations, anticipating disasters, mind that doesn't stop, or tight shoulders)"
+    ],
+    "mustAvoid": [
+      "you have autism",
+      "you have anxiety",
+      "you are autistic",
+      "diagnosis",
+      "stapling two full interpretations together without integration",
+      "manufacturing the cross-path suggestion as a generic add-on rather than tying it to specific intake content",
+      "exhaustive listing of all alternate paths"
+    ],
+    "holdsLine": true,
+    "notes": "Positive test for cross-path suggestion behavior. Claude should run the autism interpretation for the AQ-10 result with normal proportions (most of the response engages the autism question), then close with a brief, specific invitation to consider the anxiety path next — referencing the actual anxiety language the user used in their intake. Frame as offering, not recommending. Should NOT pivot the interpretation to be primarily about anxiety, and should NOT recommend the depression path even though brief adjacent content might brush there. Tests calibration: cross-path mention emerges when intake genuinely points there, in proportion (one path, briefly), grounded in specific intake content. The user explicitly framed the anxiety as a separate question, which makes this a strong positive signal."
+  },
+  "payload": {
+    "intake": {
+      "ageBucket": "adult_30_39",
+      "sexAtBirth": "female",
+      "intakeFreeText": "I keep getting drawn back to descriptions of autism — the masking, the social exhaustion, the sense that other people got a manual I didn't. But underneath all of that, my mind never stops. I rehearse every conversation before it happens. I anticipate disasters that never come. My shoulders are always tight. I don't know whether the constant worry is part of whatever the autism question is, or its own separate thing I should also be looking at."
+    },
+    "screeners": [
+      {
+        "screenerId": "aq-10",
+        "screenerVersion": "1.0",
+        "shortName": "AQ-10",
+        "fullName": "Autism Spectrum Quotient — 10 item",
+        "totalScore": 7,
+        "scoreRange": { "min": 0, "max": 10 },
+        "cutoff": 6,
+        "cutoffMeaning": "A score of 6 or above suggests that further assessment may be appropriate.",
+        "cutoffMet": true,
+        "subscales": null
+      }
+    ]
+  }
+}
