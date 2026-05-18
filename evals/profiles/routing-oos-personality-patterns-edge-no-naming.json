@@ -1,0 +1,22 @@
+{
+  "id": "routing-oos-personality-patterns-edge-no-naming",
+  "description": "Out-of-scope (personality-patterns, edge-no-naming): description points clearly to personality-patterns territory; classify should set outOfScope and return empty recommendations.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": true,
+    "expectedOutOfScopeCategory": "personality-patterns",
+    "mustNotIncludePathIds": [
+      "autism",
+      "anxiety",
+      "depression",
+      "adhd",
+      "trauma"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Should route to outOfScope with category 'personality-patterns'. No path recommendations."
+  },
+  "payload": {
+    "intakeText": "I don't really know who I am. My personality shifts depending on who I'm with. I attach so deeply, so fast, that it scares people away, and then I feel abandoned. This has been my whole life \u2014 every friendship, every relationship. I'm 38 and I don't know how to be different."
+  }
+}

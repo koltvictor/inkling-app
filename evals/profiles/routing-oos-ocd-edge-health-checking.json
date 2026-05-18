@@ -1,0 +1,22 @@
+{
+  "id": "routing-oos-ocd-edge-health-checking",
+  "description": "Out-of-scope (ocd, edge-health-checking): description points clearly to ocd territory; classify should set outOfScope and return empty recommendations.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": true,
+    "expectedOutOfScopeCategory": "ocd",
+    "mustNotIncludePathIds": [
+      "autism",
+      "anxiety",
+      "depression",
+      "adhd",
+      "trauma"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Should route to outOfScope with category 'ocd'. No path recommendations."
+  },
+  "payload": {
+    "intakeText": "I'm so anxious about my health. I check my pulse constantly throughout the day, I touch the same spot on my chest to make sure it's still beating right, I look in mirrors to see if my pupils are equal. If I don't do these things I feel like something terrible will happen."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "routing-oos-psychotic-spectrum-canonical",
+  "description": "Out-of-scope (psychotic-spectrum, canonical): description points clearly to psychotic-spectrum territory; classify should set outOfScope and return empty recommendations.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": true,
+    "expectedOutOfScopeCategory": "psychotic-spectrum",
+    "mustNotIncludePathIds": [
+      "autism",
+      "anxiety",
+      "depression",
+      "adhd",
+      "trauma"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Should route to outOfScope with category 'psychotic-spectrum'. No path recommendations."
+  },
+  "payload": {
+    "intakeText": "Lately I've been hearing things that I'm pretty sure aren't really there \u2014 like someone calling my name when no one is around. I also keep getting this feeling that I'm being watched, even when I know I'm alone in my apartment. It's hard to focus on anything else and I'm scared to tell people."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "routing-oos-ocd-guard-generalized-worry",
+  "description": "Guard against false ocd routing (guard-generalized-worry): description uses category-adjacent vocabulary but is actually anxiety territory. classify should recommend anxiety and leave outOfScope null.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": false,
+    "expectedPathIds": [
+      "anxiety"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "False-positive guard: description uses ocd-adjacent language but is actually anxiety territory. Should recommend anxiety path, NOT route to outOfScope."
+  },
+  "payload": {
+    "intakeText": "I worry about everything. Work, money, my kids, what people think of me. My mind never stops running through scenarios. I can't enjoy things because I'm always thinking about what could go wrong. It's been getting worse over the past year."
+  }
+}

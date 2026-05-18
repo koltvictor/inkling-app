@@ -1,0 +1,17 @@
+{
+  "id": "routing-oos-dissociation-guard-depression-numbness",
+  "description": "Guard against false dissociation routing (guard-depression-numbness): description uses category-adjacent vocabulary but is actually depression territory. classify should recommend depression and leave outOfScope null.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": false,
+    "expectedPathIds": [
+      "depression"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "False-positive guard: description uses dissociation-adjacent language but is actually depression territory. Should recommend depression path, NOT route to outOfScope."
+  },
+  "payload": {
+    "intakeText": "I feel numb. Like nothing matters and nothing reaches me anymore. I go through the days and nothing makes me feel anything \u2014 not joy, not pain, just flat. I'm watching my life happen and I can't engage with it. I used to love cooking and now I can't even motivate to make dinner."
+  }
+}

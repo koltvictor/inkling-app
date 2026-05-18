@@ -1,0 +1,22 @@
+{
+  "id": "routing-oos-eating-patterns-canonical",
+  "description": "Out-of-scope (eating-patterns, canonical): description points clearly to eating-patterns territory; classify should set outOfScope and return empty recommendations.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": true,
+    "expectedOutOfScopeCategory": "eating-patterns",
+    "mustNotIncludePathIds": [
+      "autism",
+      "anxiety",
+      "depression",
+      "adhd",
+      "trauma"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Should route to outOfScope with category 'eating-patterns'. No path recommendations."
+  },
+  "payload": {
+    "intakeText": "I have a really difficult relationship with food and my body. I restrict during the week and then binge on weekends. I think about my weight constantly and exercise compulsively to compensate. I've tried to stop the cycle on my own but I can't."
+  }
+}

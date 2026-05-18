@@ -1,0 +1,17 @@
+{
+  "id": "routing-oos-psychotic-spectrum-guard-social-anxiety",
+  "description": "Guard against false psychotic-spectrum routing (guard-social-anxiety): description uses category-adjacent vocabulary but is actually anxiety territory. classify should recommend anxiety and leave outOfScope null.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": false,
+    "expectedPathIds": [
+      "anxiety"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "False-positive guard: description uses psychotic-spectrum-adjacent language but is actually anxiety territory. Should recommend anxiety path, NOT route to outOfScope."
+  },
+  "payload": {
+    "intakeText": "I feel like everyone is watching me when I'm in public. Like at work I'll be doing something completely normal and I just feel everyone's eyes on me, judging. I overthink every interaction, replay conversations for days, rehearse what I'm going to say before I say it. I know rationally no one is paying that much attention but it doesn't help."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "routing-oos-personality-patterns-guard-situational-grief",
+  "description": "Guard against false personality-patterns routing (guard-situational-grief): description uses category-adjacent vocabulary but is actually depression territory. classify should recommend depression and leave outOfScope null.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": false,
+    "expectedPathIds": [
+      "depression"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "False-positive guard: description uses personality-patterns-adjacent language but is actually depression territory. Should recommend depression path, NOT route to outOfScope."
+  },
+  "payload": {
+    "intakeText": "I'm coming out of a long relationship that ended badly and I'm having a hard time. I don't trust people right now. I'm sad all the time. I don't know who I am without her. This isn't how I usually am \u2014 I'm normally pretty grounded."
+  }
+}

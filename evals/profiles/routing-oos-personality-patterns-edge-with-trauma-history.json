@@ -1,0 +1,22 @@
+{
+  "id": "routing-oos-personality-patterns-edge-with-trauma-history",
+  "description": "Out-of-scope (personality-patterns, edge-with-trauma-history): description points clearly to personality-patterns territory; classify should set outOfScope and return empty recommendations.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": true,
+    "expectedOutOfScopeCategory": "personality-patterns",
+    "mustNotIncludePathIds": [
+      "autism",
+      "anxiety",
+      "depression",
+      "adhd",
+      "trauma"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Should route to outOfScope with category 'personality-patterns'. No path recommendations."
+  },
+  "payload": {
+    "intakeText": "I had a chaotic childhood and I think it shaped me. I have abandonment issues \u2014 I cling to people, then push them away when I'm sure they're going to leave. My relationships all end the same way and have for as long as I can remember. I've been in therapy on and off for a decade and it hasn't really shifted the pattern."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "routing-oos-eating-patterns-guard-anxiety-appetite",
+  "description": "Guard against false eating-patterns routing (guard-anxiety-appetite): description uses category-adjacent vocabulary but is actually anxiety territory. classify should recommend anxiety and leave outOfScope null.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": false,
+    "expectedPathIds": [
+      "anxiety"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "False-positive guard: description uses eating-patterns-adjacent language but is actually anxiety territory. Should recommend anxiety path, NOT route to outOfScope."
+  },
+  "payload": {
+    "intakeText": "My anxiety is so bad I forget to eat sometimes. By the end of the day I realize I haven't had anything and I'm shaky and irritable. I'm not trying to lose weight, I just genuinely can't think about food when I'm this stressed about everything."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "routing-oos-bipolar-spectrum-guard-normal-mood-variation",
+  "description": "Guard against false bipolar-spectrum routing (guard-normal-mood-variation): description uses category-adjacent vocabulary but is actually depression territory. classify should recommend depression and leave outOfScope null.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": false,
+    "expectedPathIds": [
+      "depression"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "False-positive guard: description uses bipolar-spectrum-adjacent language but is actually depression territory. Should recommend depression path, NOT route to outOfScope."
+  },
+  "payload": {
+    "intakeText": "My mood depends a lot on what's going on in my life. Some weeks are good, some weeks are hard. Lately it's been more hard than good \u2014 feeling tired, sad about my job, not enjoying things like I used to. I'm wondering if I should talk to someone."
+  }
+}

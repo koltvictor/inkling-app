@@ -1,0 +1,14 @@
+{
+  "id": "routing-ambiguous-fallback",
+  "description": "User describes vague malaise without clear signals pointing to any specific path. Should recommend the single closest match with a rationale acknowledging the ambiguity. Tests that the classifier does not over-recommend or manufacture false confidence.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedPathIds": ["autism", "anxiety", "depression", "adhd", "trauma"],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Vague intake without clear directional signal. The classifier should return at least one path (the closest match) with a rationale that acknowledges the ambiguity rather than overclaiming. Crisis must be false. Manually inspect the markdown to verify the rationale is appropriately hedged and the recommendation count is small (ideally 1, not 2)."
+  },
+  "payload": {
+    "intakeText": "I do not really know how to describe what is going on. I just feel off lately. Things feel harder than they should. I am not sure where to start."
+  }
+}

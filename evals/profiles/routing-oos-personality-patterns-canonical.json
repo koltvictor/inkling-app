@@ -1,0 +1,22 @@
+{
+  "id": "routing-oos-personality-patterns-canonical",
+  "description": "Out-of-scope (personality-patterns, canonical): description points clearly to personality-patterns territory; classify should set outOfScope and return empty recommendations.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": true,
+    "expectedOutOfScopeCategory": "personality-patterns",
+    "mustNotIncludePathIds": [
+      "autism",
+      "anxiety",
+      "depression",
+      "adhd",
+      "trauma"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Should route to outOfScope with category 'personality-patterns'. No path recommendations."
+  },
+  "payload": {
+    "intakeText": "I've struggled with relationships my whole life. I fall hard and fast for people and then they let me down and it feels like the end of the world. I rage, I withdraw, I sabotage. My therapist suggested I look into something called borderline personality disorder. I've never told anyone I'm even thinking about this."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "routing-oos-personality-patterns-edge-lifelong-relational",
+  "description": "Out-of-scope (personality-patterns, edge-lifelong-relational): description points clearly to personality-patterns territory; classify should set outOfScope and return empty recommendations.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": true,
+    "expectedOutOfScopeCategory": "personality-patterns",
+    "mustNotIncludePathIds": [
+      "autism",
+      "anxiety",
+      "depression",
+      "adhd",
+      "trauma"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Should route to outOfScope with category 'personality-patterns'. No path recommendations."
+  },
+  "payload": {
+    "intakeText": "I have a hard time being alone but I also can't tolerate being close to people. I push everyone away and then panic when they actually leave. My moods swing wildly based on what other people think of me. I've been this way since I was a teenager and I'm tired of it."
+  }
+}

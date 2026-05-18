@@ -1,0 +1,22 @@
+{
+  "id": "routing-oos-dissociation-edge-with-trauma",
+  "description": "Out-of-scope (dissociation, edge-with-trauma): description points clearly to dissociation territory; classify should set outOfScope and return empty recommendations.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": true,
+    "expectedOutOfScopeCategory": "dissociation",
+    "mustNotIncludePathIds": [
+      "autism",
+      "anxiety",
+      "depression",
+      "adhd",
+      "trauma"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Should route to outOfScope with category 'dissociation'. No path recommendations."
+  },
+  "payload": {
+    "intakeText": "After my assault a few years ago I started having weeks where I just wasn't there. Like I was watching myself go through the motions but I wasn't the one doing it. It's gotten worse this year. I find myself in places and don't remember getting there. People tell me I said things I have no memory of saying."
+  }
+}

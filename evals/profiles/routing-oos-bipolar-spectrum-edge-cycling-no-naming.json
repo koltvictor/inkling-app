@@ -1,0 +1,22 @@
+{
+  "id": "routing-oos-bipolar-spectrum-edge-cycling-no-naming",
+  "description": "Out-of-scope (bipolar-spectrum, edge-cycling-no-naming): description points clearly to bipolar-spectrum territory; classify should set outOfScope and return empty recommendations.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": true,
+    "expectedOutOfScopeCategory": "bipolar-spectrum",
+    "mustNotIncludePathIds": [
+      "autism",
+      "anxiety",
+      "depression",
+      "adhd",
+      "trauma"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Should route to outOfScope with category 'bipolar-spectrum'. No path recommendations."
+  },
+  "payload": {
+    "intakeText": "My moods are all over the place. Some weeks I'm flying \u2014 I sleep two or three hours a night and don't feel tired, I take on new projects, I think I'm a genius. Then a few weeks later I'm in a hole I can't dig out of, sleeping all day, hating myself. This has been the pattern for years."
+  }
+}

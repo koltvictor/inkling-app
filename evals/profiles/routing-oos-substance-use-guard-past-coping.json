@@ -1,0 +1,17 @@
+{
+  "id": "routing-oos-substance-use-guard-past-coping",
+  "description": "Guard against false substance-use routing (guard-past-coping): description uses category-adjacent vocabulary but is actually depression territory. classify should recommend depression and leave outOfScope null.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": false,
+    "expectedPathIds": [
+      "depression"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "False-positive guard: description uses substance-use-adjacent language but is actually depression territory. Should recommend depression path, NOT route to outOfScope."
+  },
+  "payload": {
+    "intakeText": "I went through a really hard breakup last year and there were a few weeks where I was drinking too much to cope. I caught it and stopped. Now I'm dealing with the actual feelings underneath, and it's hard. I feel disconnected and sad most of the time."
+  }
+}

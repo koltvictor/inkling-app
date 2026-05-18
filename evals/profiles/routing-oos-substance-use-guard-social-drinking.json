@@ -1,0 +1,17 @@
+{
+  "id": "routing-oos-substance-use-guard-social-drinking",
+  "description": "Guard against false substance-use routing (guard-social-drinking): description uses category-adjacent vocabulary but is actually anxiety territory. classify should recommend anxiety and leave outOfScope null.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": false,
+    "expectedPathIds": [
+      "anxiety"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "False-positive guard: description uses substance-use-adjacent language but is actually anxiety territory. Should recommend anxiety path, NOT route to outOfScope."
+  },
+  "payload": {
+    "intakeText": "I drink socially \u2014 maybe a few glasses of wine on the weekends. Lately I've been doing it a bit more because I'm stressed at work and it helps me unwind. Probably should cut back but it doesn't feel out of control. Mostly the work stress is what's eating at me."
+  }
+}

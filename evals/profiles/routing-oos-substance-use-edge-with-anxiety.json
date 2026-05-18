@@ -1,0 +1,22 @@
+{
+  "id": "routing-oos-substance-use-edge-with-anxiety",
+  "description": "Out-of-scope (substance-use, edge-with-anxiety): description points clearly to substance-use territory; classify should set outOfScope and return empty recommendations.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": true,
+    "expectedOutOfScopeCategory": "substance-use",
+    "mustNotIncludePathIds": [
+      "autism",
+      "anxiety",
+      "depression",
+      "adhd",
+      "trauma"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Should route to outOfScope with category 'substance-use'. No path recommendations."
+  },
+  "payload": {
+    "intakeText": "My anxiety is unbearable without weed. I smoke from when I wake up until I go to sleep. I know it's a lot but it's the only thing that quiets my brain. When I try to take a break I'm in withdrawal \u2014 sweating, can't sleep, irritable beyond belief."
+  }
+}

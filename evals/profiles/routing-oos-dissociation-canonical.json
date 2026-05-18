@@ -1,0 +1,22 @@
+{
+  "id": "routing-oos-dissociation-canonical",
+  "description": "Out-of-scope (dissociation, canonical): description points clearly to dissociation territory; classify should set outOfScope and return empty recommendations.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": true,
+    "expectedOutOfScopeCategory": "dissociation",
+    "mustNotIncludePathIds": [
+      "autism",
+      "anxiety",
+      "depression",
+      "adhd",
+      "trauma"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Should route to outOfScope with category 'dissociation'. No path recommendations."
+  },
+  "payload": {
+    "intakeText": "I lose time. I'll come back to myself in the kitchen and realize I've been there for an hour and I have no idea what I was doing. I find things in my house that I don't remember buying. Sometimes I watch myself from outside, like I'm watching a movie of my own life."
+  }
+}

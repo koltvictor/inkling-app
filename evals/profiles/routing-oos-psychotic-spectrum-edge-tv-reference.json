@@ -1,0 +1,22 @@
+{
+  "id": "routing-oos-psychotic-spectrum-edge-tv-reference",
+  "description": "Out-of-scope (psychotic-spectrum, edge-tv-reference): description points clearly to psychotic-spectrum territory; classify should set outOfScope and return empty recommendations.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": true,
+    "expectedOutOfScopeCategory": "psychotic-spectrum",
+    "mustNotIncludePathIds": [
+      "autism",
+      "anxiety",
+      "depression",
+      "adhd",
+      "trauma"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Should route to outOfScope with category 'psychotic-spectrum'. No path recommendations."
+  },
+  "payload": {
+    "intakeText": "I think something is wrong with me but I don't know who to tell. I keep seeing flashes of things out of the corner of my eye and when I look there's nothing there. The news on TV feels like it's talking directly to me, like there are messages embedded in it just for me. My partner is starting to notice that I'm acting strange."
+  }
+}

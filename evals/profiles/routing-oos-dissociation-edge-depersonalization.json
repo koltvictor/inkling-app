@@ -1,0 +1,22 @@
+{
+  "id": "routing-oos-dissociation-edge-depersonalization",
+  "description": "Out-of-scope (dissociation, edge-depersonalization): description points clearly to dissociation territory; classify should set outOfScope and return empty recommendations.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": true,
+    "expectedOutOfScopeCategory": "dissociation",
+    "mustNotIncludePathIds": [
+      "autism",
+      "anxiety",
+      "depression",
+      "adhd",
+      "trauma"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Should route to outOfScope with category 'dissociation'. No path recommendations."
+  },
+  "payload": {
+    "intakeText": "I don't feel like I'm in my body. Everything feels far away and unreal, like I'm watching the world through fogged glass. This has been happening for months. My hands look like they belong to someone else when I look at them."
+  }
+}

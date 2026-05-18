@@ -1,0 +1,17 @@
+{
+  "id": "routing-oos-ocd-guard-perfectionism",
+  "description": "Guard against false ocd routing (guard-perfectionism): description uses category-adjacent vocabulary but is actually anxiety territory. classify should recommend anxiety and leave outOfScope null.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": false,
+    "expectedPathIds": [
+      "anxiety"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "False-positive guard: description uses ocd-adjacent language but is actually anxiety territory. Should recommend anxiety path, NOT route to outOfScope."
+  },
+  "payload": {
+    "intakeText": "I'm really particular about how things are done. I get frustrated when my coworkers don't follow processes correctly, when my partner doesn't put dishes away the right way. I know it's not a big deal but it bothers me and I can't let it go. I lose sleep over things I know don't matter."
+  }
+}

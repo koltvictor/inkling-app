@@ -1,0 +1,17 @@
+{
+  "id": "routing-oos-personality-patterns-guard-recent-relational",
+  "description": "Guard against false personality-patterns routing (guard-recent-relational): description uses category-adjacent vocabulary but is actually anxiety territory. classify should recommend anxiety and leave outOfScope null.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": false,
+    "expectedPathIds": [
+      "anxiety"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "False-positive guard: description uses personality-patterns-adjacent language but is actually anxiety territory. Should recommend anxiety path, NOT route to outOfScope."
+  },
+  "payload": {
+    "intakeText": "My partner and I have been fighting more and I'm worried we're going to break up. I feel anxious all the time about it. I keep checking my phone, replaying our conversations, looking for signs that he's losing interest. I haven't been like this in previous relationships."
+  }
+}

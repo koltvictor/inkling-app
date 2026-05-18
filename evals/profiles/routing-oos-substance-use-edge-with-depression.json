@@ -1,0 +1,22 @@
+{
+  "id": "routing-oos-substance-use-edge-with-depression",
+  "description": "Out-of-scope (substance-use, edge-with-depression): description points clearly to substance-use territory; classify should set outOfScope and return empty recommendations.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": true,
+    "expectedOutOfScopeCategory": "substance-use",
+    "mustNotIncludePathIds": [
+      "autism",
+      "anxiety",
+      "depression",
+      "adhd",
+      "trauma"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Should route to outOfScope with category 'substance-use'. No path recommendations."
+  },
+  "payload": {
+    "intakeText": "I've been depressed for years. The only thing that helps is drinking. I drink alone, mostly. A bottle of wine most nights, more on weekends. I'm functional at work but I know my drinking is becoming a real problem and I cannot seem to stop on my own."
+  }
+}

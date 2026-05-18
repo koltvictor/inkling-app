@@ -1,0 +1,22 @@
+{
+  "id": "routing-oos-ocd-canonical",
+  "description": "Out-of-scope (ocd, canonical): description points clearly to ocd territory; classify should set outOfScope and return empty recommendations.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": true,
+    "expectedOutOfScopeCategory": "ocd",
+    "mustNotIncludePathIds": [
+      "autism",
+      "anxiety",
+      "depression",
+      "adhd",
+      "trauma"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Should route to outOfScope with category 'ocd'. No path recommendations."
+  },
+  "payload": {
+    "intakeText": "I have intrusive thoughts about hurting people I love and I have to do mental rituals to make them go away \u2014 counting to certain numbers, repeating phrases, going back through my day to check that I didn't actually do anything. It takes hours and I'm exhausted."
+  }
+}

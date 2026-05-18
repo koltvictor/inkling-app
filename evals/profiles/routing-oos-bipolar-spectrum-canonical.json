@@ -1,0 +1,22 @@
+{
+  "id": "routing-oos-bipolar-spectrum-canonical",
+  "description": "Out-of-scope (bipolar-spectrum, canonical): description points clearly to bipolar-spectrum territory; classify should set outOfScope and return empty recommendations.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": true,
+    "expectedOutOfScopeCategory": "bipolar-spectrum",
+    "mustNotIncludePathIds": [
+      "autism",
+      "anxiety",
+      "depression",
+      "adhd",
+      "trauma"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Should route to outOfScope with category 'bipolar-spectrum'. No path recommendations."
+  },
+  "payload": {
+    "intakeText": "I think I might be bipolar. I have these stretches where I barely sleep, feel like I can do anything, take on five new projects at once, spend money I don't have. Then for weeks afterward I crash and can't get out of bed. My doctor suggested I look into it but I've been avoiding it."
+  }
+}

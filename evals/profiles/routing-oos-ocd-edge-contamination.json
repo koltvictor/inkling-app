@@ -1,0 +1,22 @@
+{
+  "id": "routing-oos-ocd-edge-contamination",
+  "description": "Out-of-scope (ocd, edge-contamination): description points clearly to ocd territory; classify should set outOfScope and return empty recommendations.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": true,
+    "expectedOutOfScopeCategory": "ocd",
+    "mustNotIncludePathIds": [
+      "autism",
+      "anxiety",
+      "depression",
+      "adhd",
+      "trauma"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Should route to outOfScope with category 'ocd'. No path recommendations."
+  },
+  "payload": {
+    "intakeText": "I can't stop washing my hands. I do it dozens of times a day. I have a specific number of seconds I have to wash for, a specific number of times. If I get interrupted I have to restart. My hands are raw and bleeding but I still can't stop."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "routing-oos-eating-patterns-guard-body-dissatisfaction",
+  "description": "Guard against false eating-patterns routing (guard-body-dissatisfaction): description uses category-adjacent vocabulary but is actually depression territory. classify should recommend depression and leave outOfScope null.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": false,
+    "expectedPathIds": [
+      "depression"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "False-positive guard: description uses eating-patterns-adjacent language but is actually depression territory. Should recommend depression path, NOT route to outOfScope."
+  },
+  "payload": {
+    "intakeText": "I've gained some weight over the past year and I'm not happy about it. I'm trying to eat better and exercise more but I keep falling off. I just want to feel okay in my body again. Lately I've been feeling down about it and about a lot of other things too."
+  }
+}

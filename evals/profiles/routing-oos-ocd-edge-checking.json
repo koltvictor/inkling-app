@@ -1,0 +1,22 @@
+{
+  "id": "routing-oos-ocd-edge-checking",
+  "description": "Out-of-scope (ocd, edge-checking): description points clearly to ocd territory; classify should set outOfScope and return empty recommendations.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": true,
+    "expectedOutOfScopeCategory": "ocd",
+    "mustNotIncludePathIds": [
+      "autism",
+      "anxiety",
+      "depression",
+      "adhd",
+      "trauma"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Should route to outOfScope with category 'ocd'. No path recommendations."
+  },
+  "payload": {
+    "intakeText": "I can't leave the house without checking the stove seven times. If something interrupts me I have to start over from the beginning. Same with the door \u2014 locked, unlocked, locked, unlocked, until it feels right. My partner thinks I'm being weird but I genuinely can't stop."
+  }
+}

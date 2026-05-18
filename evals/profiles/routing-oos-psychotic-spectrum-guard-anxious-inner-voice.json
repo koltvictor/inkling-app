@@ -1,0 +1,17 @@
+{
+  "id": "routing-oos-psychotic-spectrum-guard-anxious-inner-voice",
+  "description": "Guard against false psychotic-spectrum routing (guard-anxious-inner-voice): description uses category-adjacent vocabulary but is actually anxiety territory. classify should recommend anxiety and leave outOfScope null.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": false,
+    "expectedPathIds": [
+      "anxiety"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "False-positive guard: description uses psychotic-spectrum-adjacent language but is actually anxiety territory. Should recommend anxiety path, NOT route to outOfScope."
+  },
+  "payload": {
+    "intakeText": "My brain just goes a million miles an hour. There's this constant voice in my head criticizing me \u2014 you said the wrong thing, they think you're weird, on and on. I know it's just my own anxious self-talk but it sounds like a voice and I can't shut it up. I haven't had a quiet moment in months."
+  }
+}

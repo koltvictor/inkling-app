@@ -1,0 +1,16 @@
+{
+  "id": "routing-multi-signal-trauma-depression",
+  "description": "User describes both trauma symptoms and clearly named depressive patterns as related-but-distinct concerns. Should recommend both trauma and depression paths with grounded rationales — the user explicitly draws the distinction themselves.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedPathIds": ["trauma", "depression"],
+    "mustNotIncludePathIds": ["autism", "adhd"],
+    "rationaleMustReference": ["pleasure OR enjoy OR enjoyment OR happy", "flinch OR raised voice OR dreams"],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Multi-signal test. User explicitly draws a distinction between the trauma response and the depression-shaped heaviness. Ideal: both paths returned with rationales tied to specific intake content. Acceptable: one of the two with strong rationale. Not acceptable: autism/adhd recommendations, or crisis flag."
+  },
+  "payload": {
+    "intakeText": "I came out of a really bad relationship a few years ago. I still flinch when someone raises their voice and I have dreams about it. But what feels different and bigger now is that I do not enjoy anything anymore. I stopped doing the things I used to love. I cannot remember the last time I felt genuinely happy. It feels like its own separate thing on top of everything else."
+  }
+}

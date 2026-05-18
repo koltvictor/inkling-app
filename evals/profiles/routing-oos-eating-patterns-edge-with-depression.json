@@ -1,0 +1,22 @@
+{
+  "id": "routing-oos-eating-patterns-edge-with-depression",
+  "description": "Out-of-scope (eating-patterns, edge-with-depression): description points clearly to eating-patterns territory; classify should set outOfScope and return empty recommendations.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": true,
+    "expectedOutOfScopeCategory": "eating-patterns",
+    "mustNotIncludePathIds": [
+      "autism",
+      "anxiety",
+      "depression",
+      "adhd",
+      "trauma"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Should route to outOfScope with category 'eating-patterns'. No path recommendations."
+  },
+  "payload": {
+    "intakeText": "I'm depressed and I don't want to do anything. I sleep most of the day. But also \u2014 I eat at night, a lot. Whole sleeves of cookies, leftovers, whatever's in the kitchen. I hate myself afterward. Then I try to skip meals the next day and the cycle repeats."
+  }
+}

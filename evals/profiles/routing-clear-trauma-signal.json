@@ -1,0 +1,16 @@
+{
+  "id": "routing-clear-trauma-signal",
+  "description": "User describes classic post-traumatic patterns (intrusion, avoidance, hypervigilance) from a past event. Should recommend trauma path with rationale grounded in their specific words.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedPathIds": ["trauma"],
+    "mustNotIncludePathIds": ["autism", "adhd"],
+    "rationaleMustReference": ["nightmares OR dreams", "noises OR jump OR startle OR avoid"],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Clear single-path signal in trauma direction. Trauma must be in the recommendations. Rationale must reference the specific intake language about nightmares, jumping, or avoidance. Autism and ADHD should not be recommended. A second recommendation is acceptable if cleanly justified (e.g., anxiety due to hypervigilance overlap), but trauma is the must-have."
+  },
+  "payload": {
+    "intakeText": "Something happened to me about two years ago that I keep reliving. I have nightmares about it most weeks. I avoid the street where it happened. I jump at sudden loud noises. My body feels like it is constantly braced for something."
+  }
+}

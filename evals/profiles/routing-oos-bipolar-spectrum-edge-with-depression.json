@@ -1,0 +1,22 @@
+{
+  "id": "routing-oos-bipolar-spectrum-edge-with-depression",
+  "description": "Out-of-scope (bipolar-spectrum, edge-with-depression): description points clearly to bipolar-spectrum territory; classify should set outOfScope and return empty recommendations.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": true,
+    "expectedOutOfScopeCategory": "bipolar-spectrum",
+    "mustNotIncludePathIds": [
+      "autism",
+      "anxiety",
+      "depression",
+      "adhd",
+      "trauma"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Should route to outOfScope with category 'bipolar-spectrum'. No path recommendations."
+  },
+  "payload": {
+    "intakeText": "I've been depressed for a few months now. But the thing is, it's not constant \u2014 I have these stretches in between where I feel almost manic. Two weeks ago I cleaned my whole apartment, painted a wall, started a podcast, didn't sleep. Now I'm back to barely moving."
+  }
+}

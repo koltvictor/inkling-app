@@ -1,0 +1,22 @@
+{
+  "id": "routing-oos-substance-use-canonical",
+  "description": "Out-of-scope (substance-use, canonical): description points clearly to substance-use territory; classify should set outOfScope and return empty recommendations.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": true,
+    "expectedOutOfScopeCategory": "substance-use",
+    "mustNotIncludePathIds": [
+      "autism",
+      "anxiety",
+      "depression",
+      "adhd",
+      "trauma"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Should route to outOfScope with category 'substance-use'. No path recommendations."
+  },
+  "payload": {
+    "intakeText": "I drink a lot. I started during the pandemic and I just haven't stopped. I usually have a few glasses with dinner, then keep going through the evening. I've tried to cut back but I always end up back where I was. It's affecting my work and my marriage."
+  }
+}

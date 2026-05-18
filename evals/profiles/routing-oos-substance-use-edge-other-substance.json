@@ -1,0 +1,22 @@
+{
+  "id": "routing-oos-substance-use-edge-other-substance",
+  "description": "Out-of-scope (substance-use, edge-other-substance): description points clearly to substance-use territory; classify should set outOfScope and return empty recommendations.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": true,
+    "expectedOutOfScopeCategory": "substance-use",
+    "mustNotIncludePathIds": [
+      "autism",
+      "anxiety",
+      "depression",
+      "adhd",
+      "trauma"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Should route to outOfScope with category 'substance-use'. No path recommendations."
+  },
+  "payload": {
+    "intakeText": "I've been using cocaine more and more for the past year. It started recreationally on weekends and now I need it to function at work. I've spent way more money than I can afford and I've started hiding it from my partner. I want to stop but I don't know how."
+  }
+}

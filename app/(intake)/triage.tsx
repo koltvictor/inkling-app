@@ -70,12 +70,12 @@ export default function TriageScreen() {
     }
   };
 
-  const handleNotSure = () => {
+  const handleGuidedTriage = () => {
     tap.selection();
     if (text.trim().length > 0) {
       setIntakeFreeText(text.trim());
     }
-    router.push('/routing');
+    router.push('/triage-guided');
   };
 
   return (
@@ -156,14 +156,16 @@ export default function TriageScreen() {
                 </Pressable>
               );
             })}
+            <Pressable
+              onPress={handleGuidedTriage}
+              style={({ pressed }) => [styles.pathCard, pressed && styles.pathCardPressed]}
+            >
+              <Text style={styles.pathCardLabel}>Help me figure out where to start</Text>
+              <Text style={styles.pathCardDescription}>
+                A short guided check-in. No typing needed.
+              </Text>
+            </Pressable>
           </View>
-
-          <Pressable
-            onPress={handleNotSure}
-            style={({ pressed }) => [styles.notSureButton, pressed && styles.notSureButtonPressed]}
-          >
-            <Text style={styles.notSureLabel}>Not sure where to start? Let me suggest a path →</Text>
-          </Pressable>
         </ScrollView>
 
         <View style={styles.footer}>
@@ -269,15 +271,4 @@ const styles = StyleSheet.create({
   continueButtonPressed: { opacity: 0.85 },
   continueLabel: { ...typography.body, color: colors.light.paper, fontWeight: '500' },
   continueLabelDisabled: { color: colors.light.inkSoft },
-  notSureButton: {
-    paddingVertical: spacing.m,
-    alignItems: 'center',
-    marginTop: spacing.s,
-  },
-  notSureButtonPressed: { opacity: 0.6 },
-  notSureLabel: {
-    ...typography.body,
-    color: colors.light.accent,
-    fontWeight: '500',
-  },
 });

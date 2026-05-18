@@ -1,0 +1,22 @@
+{
+  "id": "routing-oos-bipolar-spectrum-edge-with-anxiety",
+  "description": "Out-of-scope (bipolar-spectrum, edge-with-anxiety): description points clearly to bipolar-spectrum territory; classify should set outOfScope and return empty recommendations.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": true,
+    "expectedOutOfScopeCategory": "bipolar-spectrum",
+    "mustNotIncludePathIds": [
+      "autism",
+      "anxiety",
+      "depression",
+      "adhd",
+      "trauma"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Should route to outOfScope with category 'bipolar-spectrum'. No path recommendations."
+  },
+  "payload": {
+    "intakeText": "I'm anxious most of the time, like there's this constant hum of worry. But also there are these weeks where I just feel UP \u2014 I clean the whole house at three in the morning, I write thousand-word emails to people I haven't talked to in years, I feel invincible and brilliant. Then I crash hard and can't function for weeks."
+  }
+}

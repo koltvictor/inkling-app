@@ -1,0 +1,22 @@
+{
+  "id": "routing-oos-psychotic-spectrum-edge-with-grief",
+  "description": "Out-of-scope (psychotic-spectrum, edge-with-grief): description points clearly to psychotic-spectrum territory; classify should set outOfScope and return empty recommendations.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": true,
+    "expectedOutOfScopeCategory": "psychotic-spectrum",
+    "mustNotIncludePathIds": [
+      "autism",
+      "anxiety",
+      "depression",
+      "adhd",
+      "trauma"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "Should route to outOfScope with category 'psychotic-spectrum'. No path recommendations."
+  },
+  "payload": {
+    "intakeText": "My mother died three years ago. Since then I've been hearing voices that are not connected to her at all \u2014 strangers' voices, sometimes saying terrible things about me. I see flickers of shadows at the edges of my vision when nothing is there. I have this growing sense that I am being watched and I do not know by whom. It has been getting worse."
+  }
+}

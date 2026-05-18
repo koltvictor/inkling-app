@@ -1,0 +1,17 @@
+{
+  "id": "routing-oos-dissociation-guard-mild-trauma-dissociation",
+  "description": "Guard against false dissociation routing (guard-mild-trauma-dissociation): description uses category-adjacent vocabulary but is actually trauma territory. classify should recommend trauma and leave outOfScope null.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": false,
+    "expectedPathIds": [
+      "trauma"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "False-positive guard: description uses dissociation-adjacent language but is actually trauma territory. Should recommend trauma path, NOT route to outOfScope."
+  },
+  "payload": {
+    "intakeText": "I had something happen to me in college that I've never really dealt with. When I think about it I feel disconnected \u2014 like I'm seeing it from outside, foggy. But I don't lose time and I'm still myself. It's just hard to be present when I'm reminded of it. I jump at loud noises and I avoid the part of town where it happened."
+  }
+}

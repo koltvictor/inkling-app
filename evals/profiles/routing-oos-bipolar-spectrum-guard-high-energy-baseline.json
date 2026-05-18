@@ -1,0 +1,17 @@
+{
+  "id": "routing-oos-bipolar-spectrum-guard-high-energy-baseline",
+  "description": "Guard against false bipolar-spectrum routing (guard-high-energy-baseline): description uses category-adjacent vocabulary but is actually anxiety territory. classify should recommend anxiety and leave outOfScope null.",
+  "endpoint": "classify",
+  "expectedQualities": {
+    "expectedOutOfScope": false,
+    "expectedPathIds": [
+      "anxiety"
+    ],
+    "expectedCrisis": false,
+    "holdsLine": true,
+    "notes": "False-positive guard: description uses bipolar-spectrum-adjacent language but is actually anxiety territory. Should recommend anxiety path, NOT route to outOfScope."
+  },
+  "payload": {
+    "intakeText": "I'm a high-energy person and always have been. I work intensely, I'm passionate about my projects, I sometimes work late into the night. But lately I'm starting to feel burned out and I worry I'm running on fumes. I can't seem to slow down even when I know I should."
+  }
+}
