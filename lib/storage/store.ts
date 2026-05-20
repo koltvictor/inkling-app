@@ -43,6 +43,7 @@ export type InterpretationEntry = {
 type AppState = {
   ageBucket: AgeBucket | null;
   ageAttestedAt: number | null;
+  acceptedTermsAt: number | null;
   sexAtBirth: SexAtBirth | null;
   intakeFreeText: string | null;
   selectedPath: PathId | null;
@@ -51,6 +52,7 @@ type AppState = {
   interpretations: Record<string, InterpretationEntry>;
 
   setAge: (bucket: AgeBucket) => void;
+  acceptTerms: () => void;
   setSexAtBirth: (s: SexAtBirth) => void;
   setIntakeFreeText: (text: string) => void;
   setSelectedPath: (path: PathId | null) => void;
@@ -72,6 +74,7 @@ export const useAppStore = create<AppState>()(
     (set) => ({
       ageBucket: null,
       ageAttestedAt: null,
+      acceptedTermsAt: null,
       sexAtBirth: null,
       intakeFreeText: null,
       selectedPath: null,
@@ -80,6 +83,7 @@ export const useAppStore = create<AppState>()(
       interpretations: {},
 
       setAge: (bucket) => set({ ageBucket: bucket, ageAttestedAt: Date.now() }),
+      acceptTerms: () => set({ acceptedTermsAt: Date.now() }),
       setSexAtBirth: (s) => set({ sexAtBirth: s }),
       setIntakeFreeText: (text) => set({ intakeFreeText: text }),
       setSelectedPath: (path) => set({ selectedPath: path }),
@@ -141,6 +145,7 @@ export const useAppStore = create<AppState>()(
         set({
           ageBucket: null,
           ageAttestedAt: null,
+          acceptedTermsAt: null,
           sexAtBirth: null,
           intakeFreeText: null,
           selectedPath: null,
@@ -155,6 +160,7 @@ export const useAppStore = create<AppState>()(
       partialize: (state) => ({
         ageBucket: state.ageBucket,
         ageAttestedAt: state.ageAttestedAt,
+        acceptedTermsAt: state.acceptedTermsAt,
         sexAtBirth: state.sexAtBirth,
         intakeFreeText: state.intakeFreeText,
         selectedPath: state.selectedPath,

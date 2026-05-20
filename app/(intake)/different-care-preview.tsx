@@ -56,7 +56,7 @@ export default function DifferentCarePreviewScreen() {
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: colors.light.bg },
+  safe: { flex: 1, backgroundColor: colors.light.paper },
   scroll: { flexGrow: 1, paddingHorizontal: spacing.xl, paddingVertical: spacing.xl },
   content: { maxWidth: 640, alignSelf: 'center', width: '100%' },
   kicker: {

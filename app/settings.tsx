@@ -1,4 +1,4 @@
-import { View, Text, Pressable, StyleSheet, Alert } from 'react-native';
+import { View, Text, Pressable, StyleSheet, Alert, Linking } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import Constants from 'expo-constants';
@@ -86,6 +86,35 @@ export default function SettingsScreen() {
         </View>
 
         <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Legal</Text>
+          <Pressable
+            onPress={() => Linking.openURL('https://inklingapp.org/privacy')}
+            hitSlop={12}
+            style={({ pressed }) => [styles.linkRow, pressed && styles.pressed]}
+          >
+            <Text style={styles.linkText}>Privacy Policy {'\u2192'}</Text>
+          </Pressable>
+          <Pressable
+            onPress={() => Linking.openURL('https://inklingapp.org/terms')}
+            hitSlop={12}
+            style={({ pressed }) => [styles.linkRow, pressed && styles.pressed]}
+          >
+            <Text style={styles.linkText}>Terms of Service {'\u2192'}</Text>
+          </Pressable>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Support</Text>
+          <Pressable
+            onPress={() => Linking.openURL('mailto:hello@inklingapp.org')}
+            hitSlop={12}
+            style={({ pressed }) => [styles.linkRow, pressed && styles.pressed]}
+          >
+            <Text style={styles.linkText}>Email Inkling {'\u2192'}</Text>
+          </Pressable>
+        </View>
+
+        <View style={styles.section}>
           <Text style={styles.sectionTitle}>About Inkling</Text>
           <Text style={styles.sectionBody}>
             Inkling administers validated screening instruments and offers thoughtful interpretation of results. It does not diagnose. For diagnostic clarity, consult a qualified clinician.
@@ -133,6 +162,12 @@ const styles = StyleSheet.create({
     marginBottom: spacing.l,
   },
   dangerLink: { alignSelf: 'flex-start' },
+  linkRow: { alignSelf: 'flex-start', paddingVertical: spacing.xs },
+  linkText: {
+    ...typography.body,
+    color: colors.light.ink,
+    textDecorationLine: 'underline',
+  },
   dangerLinkText: {
     ...typography.body,
     color: colors.light.crisis,
