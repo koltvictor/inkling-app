@@ -9,6 +9,7 @@ import { colors } from '../../design/colors';
 import { typography } from '../../design/typography';
 import { spacing } from '../../design/spacing';
 
+import { CrisisAffordance } from '../../components/CrisisAffordance';
 export default function DifferentCareScreen() {
   const router = useRouter();
   const { categoryId } = useLocalSearchParams<{
@@ -38,6 +39,7 @@ export default function DifferentCareScreen() {
   if (!category) {
     return (
       <SafeAreaView style={styles.safe}>
+      <CrisisAffordance />
         <ScrollView contentContainerStyle={styles.scroll}>
           <View style={styles.content}>
             <Text style={styles.kicker}>A different kind of attention</Text>

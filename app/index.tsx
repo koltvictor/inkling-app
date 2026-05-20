@@ -2,6 +2,7 @@ import { View, StyleSheet, Text, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { BlotMark } from '../components/system/BlotMark';
+import { CrisisAffordance } from '../components/CrisisAffordance';
 import { colors } from '../design/colors';
 import { typography } from '../design/typography';
 import { spacing } from '../design/spacing';
@@ -48,6 +49,7 @@ export default function WelcomeScreen() {
 
   return (
     <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
+      <CrisisAffordance />
       <View style={styles.hero}>
         <View style={styles.markWrap}>
           <BlotMark size={88} color={colors.light.ink} />
@@ -196,7 +198,7 @@ const settingsStyles = StyleSheet.create({
   },
   settingsLinkText: {
     fontSize: 13,
-    color: '#A89F94',
+    color: colors.light.inkSoft,
     textDecorationLine: 'underline',
   },
 });

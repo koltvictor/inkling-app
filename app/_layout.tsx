@@ -5,7 +5,6 @@ import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { colors } from "../design/colors";
 import { useAppStore } from "../lib/storage/store";
-import { CrisisAffordance } from '../components/CrisisAffordance';
 
 export default function RootLayout() {
   const [hydrated, setHydrated] = useState(useAppStore.persist.hasHydrated());
@@ -37,7 +36,6 @@ export default function RootLayout() {
           animation: "fade",
         }}
       />
-      <CrisisAffordance />
     </SafeAreaProvider>
   );
 }

@@ -19,6 +19,7 @@ import { getScreener } from '../../lib/scoring/loader';
 import { classify, type Recommendation } from '../../lib/api/client';
 import { QUESTIONS, type Answer, type Selection, synthesize } from '../../lib/intake/guided-triage';
 
+import { CrisisAffordance } from '../../components/CrisisAffordance';
 type Mode = 'question' | 'loading' | 'recommendations' | 'error';
 
 export default function TriageGuidedScreen() {
@@ -140,6 +141,7 @@ export default function TriageGuidedScreen() {
 
   return (
     <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
+      <CrisisAffordance />
       <ScrollView contentContainerStyle={styles.scrollContent} keyboardShouldPersistTaps="handled">
         {mode === 'question' && (
           <>

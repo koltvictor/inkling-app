@@ -26,6 +26,7 @@ import { colors } from '../../design/colors';
 import { typography } from '../../design/typography';
 import { spacing } from '../../design/spacing';
 
+import { CrisisAffordance } from '../../components/CrisisAffordance';
 const formatSubscale = (raw: string) =>
   raw
     .split('_')
@@ -192,6 +193,7 @@ export default function InterpretationScreen() {
 
   return (
     <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
+      <CrisisAffordance />
       <ScrollView contentContainerStyle={styles.scroll}>
         <Text style={styles.kicker}>Your responses</Text>
 

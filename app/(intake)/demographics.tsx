@@ -8,6 +8,7 @@ import { typography } from '../../design/typography';
 import { spacing } from '../../design/spacing';
 import { useAppStore, type SexAtBirth } from '../../lib/storage/store';
 
+import { CrisisAffordance } from '../../components/CrisisAffordance';
 const OPTIONS: { value: SexAtBirth; label: string }[] = [
   { value: 'female', label: 'Female' },
   { value: 'male', label: 'Male' },
@@ -33,6 +34,7 @@ export default function DemographicsScreen() {
 
   return (
     <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
+      <CrisisAffordance />
       <View style={styles.header}>
         <Text style={styles.title}>One more detail.</Text>
         <Text style={styles.subhead}>

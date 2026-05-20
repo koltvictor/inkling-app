@@ -20,6 +20,7 @@ import { tap } from '../../lib/haptics';
 import { getAllPaths, type PathId } from '../../lib/paths';
 import { getScreener } from '../../lib/scoring/loader';
 
+import { CrisisAffordance } from '../../components/CrisisAffordance';
 const MAX_LENGTH = 2000;
 const MIN_LENGTH = 10;
 
@@ -80,6 +81,7 @@ export default function TriageScreen() {
 
   return (
     <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
+      <CrisisAffordance />
       <KeyboardAvoidingView
         style={styles.kav}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}

@@ -1,4 +1,4 @@
-import { View, Text, Pressable, StyleSheet, Alert, Linking } from 'react-native';
+import { View, Text, Pressable, StyleSheet, Alert, Linking, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import Constants from 'expo-constants';
@@ -68,7 +68,11 @@ export default function SettingsScreen() {
         </Pressable>
       </View>
 
-      <View style={styles.content}>
+      <ScrollView
+        style={styles.content}
+        contentContainerStyle={styles.contentInner}
+        showsVerticalScrollIndicator={false}
+      >
         <Text style={styles.title}>Settings</Text>
 
         <View style={styles.section}>
@@ -121,7 +125,7 @@ export default function SettingsScreen() {
           </Text>
           <Text style={styles.versionText}>Version {version}</Text>
         </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -142,6 +146,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   content: { flex: 1 },
+  contentInner: { paddingBottom: spacing.xxxl },
   title: {
     ...typography.display,
     fontSize: 40,
